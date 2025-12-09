@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | Webgari - Web Designer & Developer</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* About Page Specific Styles */
+        .about-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 0 80px;
+            position: relative;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .image-wrapper {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+            background: var(--accent-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%);
+            z-index: 1;
+        }
+
+        .profile-placeholder {
+            font-size: 8rem;
+            font-family: var(--font-display);
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.9);
+            z-index: 2;
+        }
+
+        .image-decoration {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--accent-primary);
+            border-radius: 24px;
+            top: 20px;
+            left: 20px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .floating-badge {
+            position: absolute;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 16px 24px;
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+
+        .floating-badge.top-right {
+            top: -20px;
+            right: -20px;
+        }
+
+        .floating-badge.bottom-left {
+            bottom: 40px;
+            left: -30px;
+        }
+
+        .badge-number {
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: var(--font-display);
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .badge-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .about-text h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text h1 span {
+            display: block;
+        }
+
+        .about-text h1 .gradient-text {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-intro {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .about-description {
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 3rem;
+        }
+
+        .skill-tag {
+            padding: 10px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 100px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: var(--transition-fast);
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent-primary);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .about-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: var(--section-padding) 0;
+            background: var(--bg-secondary);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .value-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: var(--transition-base);
+        }
+
+        .value-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-8px);
+            box-shadow: var(--glow-primary);
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-gradient-subtle);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .value-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--accent-primary);
+        }
+
+        .value-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .value-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Portfolio CTA Section */
+        .portfolio-cta-section {
+            padding: var(--section-padding) 0;
+            text-align: center;
+        }
+
+        .cta-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 32px;
+            padding: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent-gradient);
+        }
+
+        .cta-box h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .portfolio-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 36px;
+            background: var(--accent-gradient);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 100px;
+            transition: var(--transition-base);
+        }
+
+        .portfolio-link:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--glow-primary);
+        }
+
+        .portfolio-link svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-link:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+                text-align: center;
+            }
+
+            .about-image {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .image-decoration {
+                display: none;
+            }
+
+            .floating-badge.top-right {
+                top: -10px;
+                right: 10px;
+            }
+
+            .floating-badge.bottom-left {
+                bottom: 20px;
+                left: 10px;
+            }
+
+            .skills-grid {
+                justify-content: center;
+            }
+
+            .about-cta {
+                justify-content: center;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 4rem auto 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-hero {
+                padding: 100px 0 60px;
+            }
+
+            .about-content {
+                gap: 3rem;
+            }
+
+            .profile-placeholder {
+                font-size: 5rem;
+            }
+
+            .floating-badge {
+                padding: 12px 18px;
+            }
+
+            .badge-number {
+                font-size: 1.5rem;
+            }
+
+            .badge-label {
+                font-size: 0.75rem;
+            }
+
+            .cta-box {
+                padding: 2.5rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cursor Follower -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Animated Background Grid -->
+    <div class="bg-grid"></div>
+
+    <!-- Floating Gradient Orbs -->
+    <div class="gradient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="logo-wrapper">
+                    <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+                        <path d="M20 0L40 20L20 40L0 20L20 0Z" fill="currentColor"/>
+                        <path d="M20 8L32 20L20 32L8 20L20 8Z" fill="url(#logoGrad)" opacity="0.6"/>
+                        <defs>
+                            <linearGradient id="logoGrad" x1="8" y1="8" x2="32" y2="32">
+                                <stop offset="0%" stop-color="#6366f1"/>
+                                <stop offset="100%" stop-color="#a855f7"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="logo-text">Webgari<span class="logo-accent">.</span></span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link"><span data-text="Home">Home</span></a></li>
+                <li><a href="index.html#services" class="nav-link"><span data-text="Services">Services</span></a></li>
+                <li><a href="index.html#portfolio" class="nav-link"><span data-text="Work">Work</span></a></li>
+                <li><a href="about.html" class="nav-link active"><span data-text="About">About</span></a></li>
+            </ul>
+            <a href="index.html#contact" class="nav-cta">
+                <span>Let's Talk</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="image-wrapper">
+                        <span class="profile-placeholder">W</span>
+                    </div>
+                    <div class="image-decoration"></div>
+                    <div class="floating-badge top-right">
+                        <div class="badge-number">5+</div>
+                        <div class="badge-label">Years Experience</div>
+                    </div>
+                    <div class="floating-badge bottom-left">
+                        <div class="badge-number">50+</div>
+                        <div class="badge-label">Projects Completed</div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h1>
+                        <span>Hi, I'm</span>
+                        <span class="gradient-text">Wangari</span>
+                    </h1>
+                    <p class="about-intro">
+                        A passionate web designer and developer dedicated to crafting beautiful,
+                        high-converting digital experiences for ambitious brands and small businesses.
+                    </p>
+                    <p class="about-description">
+                        I believe every business deserves a stunning online presence, regardless of size or budget.
+                        That's why I offer flexible payment plans and work closely with each client to bring their
+                        unique vision to life. From elegant nail salons to bold barbershops, I create custom websites
+                        that not only look amazing but also drive real results.
+                    </p>
+                    <div class="skills-grid">
+                        <span class="skill-tag">Web Design</span>
+                        <span class="skill-tag">UI/UX</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Responsive Design</span>
+                        <span class="skill-tag">Animation</span>
+                        <span class="skill-tag">SEO</span>
+                    </div>
+                    <div class="about-cta">
+                        <a href="https://wangary-portfolio-48rguto0v-wangarys-projects.vercel.app/" target="_blank" class="btn btn-primary magnetic">
+                            <span class="btn-text">View My Portfolio</span>
+                            <span class="btn-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                                </svg>
+                            </span>
+                        </a>
+                        <a href="index.html#contact" class="btn btn-ghost magnetic">
+                            <span class="btn-text">Get in Touch</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-header" style="text-align: center;">
+                <span class="section-tag">My Approach</span>
+                <h2 class="section-title">
+                    <span>What drives my</span>
+                    <span><em>work</em></span>
+                </h2>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3>Quality First</h3>
+                    <p>Every pixel matters. I craft websites with meticulous attention to detail, ensuring your brand shines online.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/>
+                        </svg>
+                    </div>
+                    <h3>Client Focused</h3>
+                    <p>Your success is my priority. I work closely with you to understand your goals and deliver results that exceed expectations.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
+                    <h3>Fast & Reliable</h3>
+                    <p>I deliver projects on time without compromising quality. Your website will be fast, secure, and built to last.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio CTA Section -->
+    <section class="portfolio-cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Want to see more of my work?</h2>
+                <p>Check out my full portfolio to explore all my projects, design experiments, and creative work.</p>
+                <a href="https://wangary-portfolio-48rguto0v-wangarys-projects.vercel.app/" target="_blank" class="portfolio-link">
+                    Visit My Portfolio
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+                            <path d="M20 0L40 20L20 40L0 20L20 0Z" fill="currentColor"/>
+                            <path d="M20 8L32 20L20 32L8 20L20 8Z" fill="url(#footerLogoGrad)" opacity="0.6"/>
+                            <defs>
+                                <linearGradient id="footerLogoGrad" x1="8" y1="8" x2="32" y2="32">
+                                    <stop offset="0%" stop-color="#6366f1"/>
+                                    <stop offset="100%" stop-color="#a855f7"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <span>Webgari<span class="logo-accent">.</span></span>
+                    </a>
+                    <p>Crafting digital experiences that convert visitors into customers.</p>
+                </div>
+                <div class="footer-nav">
+                    <div class="footer-col">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index.html#services">Services</a></li>
+                            <li><a href="index.html#portfolio">Work</a></li>
+                            <li><a href="index.html#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Demos</h4>
+                        <ul>
+                            <li><a href="examples/nail-tech.html">Nail Tech</a></li>
+                            <li><a href="examples/barbershop.html">Barbershop</a></li>
+                            <li><a href="examples/restaurant.html">Restaurant</a></li>
+                            <li><a href="examples/flower-shop.html">Flower Shop</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Webgari. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
