@@ -648,10 +648,18 @@
                             <label for="budget">Budget Range</label>
                             <select id="budget" name="budget">
                                 <option value="">Select your budget...</option>
-                                <option value="500-1000">$500 - $1,000</option>
-                                <option value="1000-2500">$1,000 - $2,500</option>
-                                <option value="2500-5000">$2,500 - $5,000</option>
-                                <option value="5000+">$5,000+</option>
+                                <optgroup label="One-Time Payment">
+                                    <option value="500-1000">$500 - $1,000</option>
+                                    <option value="1000-2500">$1,000 - $2,500</option>
+                                    <option value="2500-5000">$2,500 - $5,000</option>
+                                    <option value="5000+">$5,000+</option>
+                                </optgroup>
+                                <optgroup label="Monthly Payment Plan">
+                                    <option value="monthly-99">$99/month (6 months)</option>
+                                    <option value="monthly-149">$149/month (6 months)</option>
+                                    <option value="monthly-199">$199/month (6 months)</option>
+                                    <option value="monthly-299">$299/month (12 months)</option>
+                                </optgroup>
                                 <option value="negotiate">Let's negotiate pricing</option>
                             </select>
                             <div class="input-line"></div>
@@ -691,7 +699,7 @@
                                 </linearGradient>
                             </defs>
                         </svg>
-                        <span>WebCraft<span class="logo-accent">.</span></span>
+                        <span>Webgari<span class="logo-accent">.</span></span>
                     </a>
                     <p>Crafting digital experiences that convert visitors into customers.</p>
                 </div>
