@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ember Street Kitchen Seattle | Wood Grilled Bowls & Stone Fired Pizza</title>
+    <meta name="description" content="Modern restaurant serving grilled bowls, wood fired dishes, signature burgers, and handcrafted pizzas. Fresh flavors and a warm dining experience every day.">
+    <link rel="stylesheet" href="restaurant.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lato:wght@300;400;500;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Demo Banner -->
+    <div class="demo-banner">
+        <span>This is a demo website example</span>
+        <a href="../index.html" class="back-link">Back to Portfolio</a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <div class="logo-flame">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 23c-4.4 0-8-3.6-8-8 0-3.5 2.3-6.2 5-8.5.3-.3.8-.1.9.3.2.8.5 1.5.8 2.2 1.3-1.5 2.3-3.5 2.3-5.5 0-.4.4-.7.8-.5C17.3 4.5 20 8.5 20 13c0 5.5-4.5 10-10 10h2z"/>
+                    </svg>
+                </div>
+                <span>Ember Street Kitchen</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#menu" class="nav-link">Menu</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#specials" class="nav-link">Specials</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="#order" class="btn btn-primary nav-cta">Order Online</a>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <div class="flame-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+            <div class="smoke-effect"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge animate-pop">
+                <span class="fire-icon">🔥</span>
+                Now Open for Dine-In & Takeout
+            </div>
+            <h1 class="hero-title">
+                <span class="title-line animate-slide-up">Fresh flavors.</span>
+                <span class="title-line animate-slide-up delay-1">Open flames.</span>
+                <span class="title-line highlight animate-slide-up delay-2">Real food.</span>
+            </h1>
+            <p class="hero-subtitle animate-fade-in delay-3">Grilled bowls, handcrafted pizzas, signature burgers, and house made sauces served in a warm and lively setting.</p>
+            <div class="hero-cta animate-fade-in delay-4">
+                <a href="#menu" class="btn btn-primary btn-lg">
+                    <span>View Menu</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="#order" class="btn btn-secondary btn-lg">Order Online</a>
+            </div>
+        </div>
+        <div class="hero-dish animate-float">
+            <div class="dish-image">
+                <div class="dish-glow"></div>
+                <div class="dish-content">
+                    <span>Fire Grilled<br>Chicken Bowl</span>
+                </div>
+                <div class="steam steam-1"></div>
+                <div class="steam steam-2"></div>
+                <div class="steam steam-3"></div>
+            </div>
+            <div class="dish-tag">
+                <span class="tag-price">$14</span>
+                <span class="tag-label">Most Popular</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3>Handcrafted Daily</h3>
+                    <p>Every dish starts with fresh produce, in-house seasoning blends, and sauces made from scratch each morning.</p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>Bringing People Together</h3>
+                    <p>Our space is built for sharing. Comfortable seating, open kitchen energy, and casual service that feels welcoming.</p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon flame-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 23c-4.4 0-8-3.6-8-8 0-3.5 2.3-6.2 5-8.5.3-.3.8-.1.9.3.2.8.5 1.5.8 2.2 1.3-1.5 2.3-3.5 2.3-5.5 0-.4.4-.7.8-.5C17.3 4.5 20 8.5 20 13c0 5.5-4.5 10-10 10h2z"/>
+                        </svg>
+                    </div>
+                    <h3>Fire Cooked Flavor</h3>
+                    <p>Real flames give every dish a smoky depth. From burgers to salmon bowls, the fire adds character that sets us apart.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Dishes Section -->
+    <section class="popular-dishes">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Fan Favorites</span>
+                <h2 class="section-title">Popular Dishes</h2>
+                <p class="section-subtitle">The meals our guests can't stop ordering</p>
+            </div>
+
+            <div class="dishes-slider">
+                <div class="dish-card">
+                    <div class="dish-image-wrapper">
+                        <div class="dish-img dish-1">
+                            <div class="dish-steam"></div>
+                        </div>
+                        <div class="dish-badge">Best Seller</div>
+                    </div>
+                    <div class="dish-info">
+                        <h3>Fire Grilled Chicken Bowl</h3>
+                        <p>Char grilled chicken, seasoned rice, roasted veggies, crunchy slaw, and smoked chili sauce.</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">$14</span>
+                            <button class="btn btn-add">Add to Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-image-wrapper">
+                        <div class="dish-img dish-2">
+                            <div class="dish-steam"></div>
+                        </div>
+                    </div>
+                    <div class="dish-info">
+                        <h3>Street Fire Burger</h3>
+                        <p>Half pound patty, melted cheddar, grilled onions, smoky house sauce on toasted brioche.</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">$13</span>
+                            <button class="btn btn-add">Add to Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-image-wrapper">
+                        <div class="dish-img dish-3">
+                            <div class="dish-steam"></div>
+                        </div>
+                        <div class="dish-badge new">New</div>
+                    </div>
+                    <div class="dish-info">
+                        <h3>Street Pesto Pizza</h3>
+                        <p>House made basil pesto, chicken, cherry tomatoes, and shaved parmesan on stone fired crust.</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">$14</span>
+                            <button class="btn btn-add">Add to Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-image-wrapper">
+                        <div class="dish-img dish-4">
+                            <div class="dish-steam"></div>
+                        </div>
+                    </div>
+                    <div class="dish-info">
+                        <h3>Smoky Honey Wings</h3>
+                        <p>Crispy wings glazed in a honey chili sauce with a smoky kick.</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">$11</span>
+                            <button class="btn btn-add">Add to Order</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Our Menu</span>
+                <h2 class="section-title">Fresh From The Grill</h2>
+                <p class="section-subtitle">Every dish made with care, fire, and fresh ingredients</p>
+            </div>
+
+            <div class="menu-tabs">
+                <button class="menu-tab active" data-tab="bowls">
+                    <span class="tab-icon">🥗</span>
+                    Bowls
+                </button>
+                <button class="menu-tab" data-tab="pizza">
+                    <span class="tab-icon">🍕</span>
+                    Pizza
+                </button>
+                <button class="menu-tab" data-tab="burgers">
+                    <span class="tab-icon">🍔</span>
+                    Burgers
+                </button>
+                <button class="menu-tab" data-tab="sides">
+                    <span class="tab-icon">🍟</span>
+                    Sides
+                </button>
+                <button class="menu-tab" data-tab="desserts">
+                    <span class="tab-icon">🍰</span>
+                    Desserts
+                </button>
+            </div>
+
+            <div class="menu-content">
+                <!-- Bowls -->
+                <div class="menu-panel active" id="bowls">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <div class="menu-item-image bowl-1"></div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-header">
+                                    <h3>Fire Grilled Chicken Bowl</h3>
+                                    <span class="menu-item-price">$14</span>
+                                </div>
+                                <p>Char grilled chicken, seasoned rice, roasted veggies, crunchy slaw, and smoked chili sauce.</p>
+                                <button class="btn btn-order">Add to Order</button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-item-image bowl-2"></div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-header">
+                                    <h3>Ember Salmon Bowl</h3>
+                                    <span class="menu-item-price">$17</span>
+                                </div>
+                                <p>Salmon cooked over open flame with garlic butter, jasmine rice, citrus greens, and sesame dressing.</p>
+                                <button class="btn btn-order">Add to Order</button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-item-image bowl-3"></div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-header">
+                                    <h3>Veggie Market Bowl</h3>
+                                    <span class="menu-item-price">$13</span>
+                                </div>
+                                <p>Roasted sweet potato, grilled zucchini, corn, black beans, and chipotle lime crema.</p>
+                                <button class="btn btn-order">Add to Order</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pizza -->
+                <div class="menu-panel" id="pizza">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <div class="menu-item-image pizza-1"></div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-header">
+                                    <h3>Classic Margherita</h3>
+                                    <span class="menu-item-price">$12</span>
+                                </div>
+                                <p>Fresh mozzarella, basil leaves, slow cooked tomato sauce, and olive oil on a crisp stone fired crust.</p>
+                                <button class="btn btn-order">Add to Order</button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-item-image pizza-2"></div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-header">
+                                    <h3>Street Pesto</h3>
+                                    <span class="menu-item-price">$14</span>
+                                </div>
+                                <p>House made basil pesto, chicken, cherry tomatoes, and shaved parmesan.</p>
+                                <button class="btn btn-order">Add to Order</button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-item-image pizza-3"></div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-header">
+                                    <h3>Spicy Ember Pizza</h3>
+                                    <span class="menu-item-price">$15</span>
+                                </div>
+                                <p>Fire roasted peppers, smoked sausage, fresh mozzarella, and chili infused olive oil.</p>
+                                <button class="btn btn-order">Add to Order</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Burgers -->
+                <div class="menu-panel" id="burgers">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <div class="menu-item-image burger-1"></div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-header">
+                                    <h3>Street Fire Burger</h3>
+                                    <span class="menu-item-price">$13</span>
+                                </div>
+                                <p>Half pound patty, melted cheddar, grilled onions, smoky house sauce, and lettuce on toasted brioche.</p>
+                                <button class="btn btn-order">Add to Order</button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-item-image burger-2"></div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-header">
+                                    <h3>Basil Chicken Sandwich</h3>
+                                    <span class="menu-item-price">$12</span>
+                                </div>
+                                <p>Grilled chicken breast, basil aioli, tomato, and crisp greens.</p>
+                                <button class="btn btn-order">Add to Order</button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-item-image burger-3"></div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-header">
+                                    <h3>Veggie Stacker</h3>
+                                    <span class="menu-item-price">$11</span>
+                                </div>
+                                <p>Black bean patty, roasted mushrooms, pepper jack, and chipotle mayo.</p>
+                                <button class="btn btn-order">Add to Order</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sides -->
+                <div class="menu-panel" id="sides">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <div class="menu-item-image sides-1"></div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-header">
+                                    <h3>Smoky Honey Wings</h3>
+                                    <span class="menu-item-price">$11</span>
+                                </div>
+                                <p>Crispy wings glazed in a honey chili sauce.</p>
+                                <button class="btn btn-order">Add to Order</button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-item-image sides-2"></div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-header">
+                                    <h3>Garlic Herb Fries</h3>
+                                    <span class="menu-item-price">$6</span>
+                                </div>
+                                <p>Tossed in garlic oil and herbs with dipping sauce.</p>
+                                <button class="btn btn-order">Add to Order</button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-item-image sides-3"></div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-header">
+                                    <h3>Roasted Street Corn</h3>
+                                    <span class="menu-item-price">$7</span>
+                                </div>
+                                <p>Fire roasted corn with cotija cheese and lime seasoning.</p>
+                                <button class="btn btn-order">Add to Order</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desserts -->
+                <div class="menu-panel" id="desserts">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <div class="menu-item-image dessert-1"></div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-header">
+                                    <h3>Molten Lava Cake</h3>
+                                    <span class="menu-item-price">$7</span>
+                                </div>
+                                <p>Warm chocolate cake with vanilla ice cream.</p>
+                                <button class="btn btn-order">Add to Order</button>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-item-image dessert-2"></div>
+                            <div class="menu-item-content">
+                                <div class="menu-item-header">
+                                    <h3>Cinnamon Sugar Flatbread</h3>
+                                    <span class="menu-item-price">$6</span>
+                                </div>
+                                <p>Lightly sweetened flatbread with cinnamon drizzle.</p>
+                                <button class="btn btn-order">Add to Order</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-cta">
+                <a href="#order" class="btn btn-primary btn-lg">View Full Menu & Order</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weekly Special -->
+    <section id="specials" class="weekly-special">
+        <div class="container">
+            <div class="special-content">
+                <div class="special-image">
+                    <div class="special-img">
+                        <div class="flame-overlay"></div>
+                    </div>
+                    <div class="special-badge">
+                        <span class="badge-text">This Week Only</span>
+                    </div>
+                </div>
+                <div class="special-info">
+                    <span class="section-badge">Weekly Special</span>
+                    <h2>Smoked Brisket Bowl</h2>
+                    <p class="special-description">Slow smoked brisket, crispy onion strings, pickled jalapeños, cilantro lime rice, and our signature BBQ drizzle. Limited time only!</p>
+                    <div class="special-price">
+                        <span class="original-price">$18</span>
+                        <span class="sale-price">$15</span>
+                    </div>
+                    <a href="#order" class="btn btn-primary btn-lg">Order Now</a>
+                    <div class="special-countdown">
+                        <span>Ends in:</span>
+                        <div class="countdown-timer">
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="days">3</span>
+                                <span class="countdown-label">Days</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="hours">12</span>
+                                <span class="countdown-label">Hours</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="minutes">45</span>
+                                <span class="countdown-label">Min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <span class="section-badge">Our Story</span>
+                    <h2>The Heart of Ember Street Kitchen</h2>
+                    <p class="lead">Real food cooked with care.</p>
+                    <p>Our restaurant was built around the idea that fire makes everything taste better. It adds personality. It adds depth. Most of all, it brings people together.</p>
+                    <p>Our team works with local farms whenever possible. Every morning we chop fresh vegetables, prepare sauces from scratch, and start the grill. The goal is consistency and care, so every guest gets a meal that feels crafted, not rushed.</p>
+
+                    <div class="founders">
+                        <div class="founder">
+                            <div class="founder-avatar">AL</div>
+                            <div class="founder-info">
+                                <h4>Adriana Lopez</h4>
+                                <span>Creative Lead & Recipe Developer</span>
+                            </div>
+                        </div>
+                        <div class="founder">
+                            <div class="founder-avatar">LL</div>
+                            <div class="founder-info">
+                                <h4>Luis Lopez</h4>
+                                <span>Operations Lead</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-images">
+                    <div class="about-img about-img-1">
+                        <span>Open Kitchen</span>
+                    </div>
+                    <div class="about-img about-img-2">
+                        <span>Fresh Prep</span>
+                    </div>
+                    <div class="about-img about-img-3">
+                        <span>The Grill</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Gallery</span>
+                <h2 class="section-title">From Our Kitchen</h2>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item gallery-item-1 large">
+                    <div class="gallery-overlay">
+                        <span>Fire Grilled Chicken Bowl</span>
+                    </div>
+                </div>
+                <div class="gallery-item gallery-item-2">
+                    <div class="gallery-overlay">
+                        <span>Stone Fired Pizza</span>
+                    </div>
+                </div>
+                <div class="gallery-item gallery-item-3">
+                    <div class="gallery-overlay">
+                        <span>Open Kitchen</span>
+                    </div>
+                </div>
+                <div class="gallery-item gallery-item-4">
+                    <div class="gallery-overlay">
+                        <span>Fresh Ingredients</span>
+                    </div>
+                </div>
+                <div class="gallery-item gallery-item-5 large">
+                    <div class="gallery-overlay">
+                        <span>Street Fire Burger</span>
+                    </div>
+                </div>
+                <div class="gallery-item gallery-item-6">
+                    <div class="gallery-overlay">
+                        <span>Dining Experience</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order CTA Section -->
+    <section id="order" class="order-cta">
+        <div class="container">
+            <div class="order-content">
+                <div class="order-text">
+                    <h2>Hungry Now?</h2>
+                    <p>Skip the wait and place your order online. Pick up at our counter or enjoy it fresh in our dining room.</p>
+                </div>
+                <div class="order-actions">
+                    <a href="#" class="btn btn-primary btn-xl">
+                        <span class="btn-icon">🛒</span>
+                        Order for Pickup
+                    </a>
+                    <a href="#" class="btn btn-secondary btn-xl">
+                        <span class="btn-icon">🚗</span>
+                        Order Delivery
+                    </a>
+                </div>
+                <div class="order-info">
+                    <div class="order-info-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        <span>Ready in 15-25 min</span>
+                    </div>
+                    <div class="order-info-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                        <span>No minimum order</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Reviews</span>
+                <h2 class="section-title">What People Are Saying</h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"The chicken bowl is incredible. You can taste that it's actually cooked over fire. This is my new favorite lunch spot!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SK</div>
+                        <div class="author-info">
+                            <span class="author-name">Sarah K.</span>
+                            <span class="author-platform">Google Review</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Finally a place that does pizza right. The stone fired crust is perfect and the pesto is clearly made fresh. Will be back!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MJ</div>
+                        <div class="author-info">
+                            <span class="author-name">Mike J.</span>
+                            <span class="author-platform">Yelp Review</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Brought the whole family and everyone found something they loved. The atmosphere is great and you can see them cooking. Kids loved it!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RD</div>
+                        <div class="author-info">
+                            <span class="author-name">Rachel D.</span>
+                            <span class="author-platform">Google Review</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <span class="section-badge">Visit Us</span>
+                    <h2>Come Hungry, Leave Happy</h2>
+
+                    <div class="info-list">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Location</h4>
+                                <p>1283 Union Market Row<br>Seattle, WA 98102</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Hours</h4>
+                                <p>Mon - Thu: 11am - 9pm<br>Fri - Sat: 11am - 10pm<br>Sun: 11am - 8pm</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>(206) 555-4417</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>hello@emberstreetkitchen.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-placeholder">
+                    <div class="map-content">
+                        <span>1283 Union Market Row, Seattle</span>
+                        <a href="#" class="btn btn-primary">Get Directions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-icon">🔥</div>
+                <h2>Get Fire Deals</h2>
+                <p>Sign up for exclusive offers, new menu items, and special events.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-flame">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 23c-4.4 0-8-3.6-8-8 0-3.5 2.3-6.2 5-8.5.3-.3.8-.1.9.3.2.8.5 1.5.8 2.2 1.3-1.5 2.3-3.5 2.3-5.5 0-.4.4-.7.8-.5C17.3 4.5 20 8.5 20 13c0 5.5-4.5 10-10 10h2z"/>
+                            </svg>
+                        </div>
+                        Ember Street Kitchen
+                    </div>
+                    <p>Flavor made fresh every day. Fire cooked dishes, handcrafted sauces, and a community atmosphere.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="#menu">Bowls</a></li>
+                        <li><a href="#menu">Pizza</a></li>
+                        <li><a href="#menu">Burgers</a></li>
+                        <li><a href="#menu">Sides</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#specials">Specials</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>1283 Union Market Row<br>Seattle, WA 98102</p>
+                    <p>(206) 555-4417</p>
+                    <p>hello@emberstreetkitchen.com</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ember Street Kitchen. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                this.classList.toggle('active');
+            });
+        }
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    const navbarHeight = document.querySelector('.navbar').offsetHeight + 40;
+                    const targetPosition = target.offsetTop - navbarHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+
+                    navMenu.classList.remove('active');
+                    navToggle.classList.remove('active');
+                }
+            });
+        });
+
+        // Menu Tabs
+        const menuTabs = document.querySelectorAll('.menu-tab');
+        const menuPanels = document.querySelectorAll('.menu-panel');
+
+        menuTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                menuTabs.forEach(t => t.classList.remove('active'));
+                menuPanels.forEach(p => p.classList.remove('active'));
+
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        // Scroll Animations
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.feature-card, .dish-card, .menu-item, .testimonial-card, .gallery-item');
+
+            elements.forEach((el, index) => {
+                const rect = el.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight - 100;
+
+                if (isVisible) {
+                    setTimeout(() => {
+                        el.classList.add('animate-in');
+                    }, index * 50);
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll();
+
+        // Form submissions (demo)
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('This is a demo website. Form submissions are not functional.');
+            });
+        });
+
+        // Add to order buttons (demo)
+        document.querySelectorAll('.btn-add, .btn-order').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                this.textContent = 'Added!';
+                this.style.background = '#5C8C57';
+                setTimeout(() => {
+                    this.textContent = 'Add to Order';
+                    this.style.background = '';
+                }, 2000);
+            });
+        });
+
+        // Countdown Timer (demo)
+        function updateCountdown() {
+            // This is just for demo purposes
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+
+            if (hoursEl && minutesEl) {
+                let hours = parseInt(hoursEl.textContent);
+                let minutes = parseInt(minutesEl.textContent);
+
+                minutes--;
+                if (minutes < 0) {
+                    minutes = 59;
+                    hours--;
+                }
+                if (hours < 0) {
+                    hours = 23;
+                }
+
+                hoursEl.textContent = hours;
+                minutesEl.textContent = minutes < 10 ? '0' + minutes : minutes;
+            }
+        }
+
+        setInterval(updateCountdown, 60000);
+    </script>
+</body>
+</html>
