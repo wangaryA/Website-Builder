@@ -636,30 +636,52 @@
                             <label for="business">Business Type</label>
                             <select id="business" name="business">
                                 <option value="">Select your industry...</option>
-                                <option value="beauty">Beauty & Wellness</option>
-                                <option value="restaurant">Restaurant & Food</option>
-                                <option value="fitness">Health & Fitness</option>
-                                <option value="retail">Retail & E-commerce</option>
-                                <option value="realestate">Real Estate</option>
-                                <option value="other">Other</option>
+                                <optgroup label="Beauty & Personal Care">
+                                    <option value="nail-salon" data-tier="starter">Nail Salon</option>
+                                    <option value="barber-shop" data-tier="starter">Barber Shop</option>
+                                    <option value="lash-tech" data-tier="starter">Lash Tech</option>
+                                    <option value="tattoo-shop" data-tier="standard">Tattoo Shop</option>
+                                </optgroup>
+                                <optgroup label="Automotive">
+                                    <option value="car-detailing" data-tier="starter">Car Detailing</option>
+                                    <option value="auto-repair" data-tier="standard">Auto Repair Shop</option>
+                                    <option value="mechanic" data-tier="standard">Mechanic</option>
+                                    <option value="towing" data-tier="starter">Towing Services</option>
+                                </optgroup>
+                                <optgroup label="Food & Hospitality">
+                                    <option value="restaurant" data-tier="premium">Restaurant</option>
+                                    <option value="small-restaurant" data-tier="standard">Small Restaurant / Cafe</option>
+                                    <option value="grocery" data-tier="standard">Grocery Mart</option>
+                                </optgroup>
+                                <optgroup label="Services">
+                                    <option value="cleaning" data-tier="starter">Cleaning Services</option>
+                                    <option value="personal-trainer" data-tier="starter">Personal Trainer</option>
+                                    <option value="daycare" data-tier="standard">Daycare Center</option>
+                                </optgroup>
+                                <optgroup label="Professional">
+                                    <option value="real-estate" data-tier="premium">Real Estate Agent</option>
+                                    <option value="retail" data-tier="standard">Retail & E-commerce</option>
+                                </optgroup>
+                                <option value="other" data-tier="standard">Other</option>
                             </select>
                             <div class="input-line"></div>
+                            <p class="pricing-hint" id="pricing-hint" style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-muted); display: none;"></p>
                         </div>
                         <div class="form-group">
                             <label for="budget">Budget Range</label>
                             <select id="budget" name="budget">
                                 <option value="">Select your budget...</option>
-                                <optgroup label="One-Time Payment">
-                                    <option value="500-1000">$500 - $1,000</option>
-                                    <option value="1000-2500">$1,000 - $2,500</option>
-                                    <option value="2500-5000">$2,500 - $5,000</option>
-                                    <option value="5000+">$5,000+</option>
+                                <optgroup label="One-Time Payment" id="onetime-options">
+                                    <option value="300-500">$300 - $500</option>
+                                    <option value="500-800">$500 - $800</option>
+                                    <option value="800-1200">$800 - $1,200</option>
+                                    <option value="1200+">$1,200+</option>
                                 </optgroup>
-                                <optgroup label="Monthly Payment Plan">
-                                    <option value="monthly-99">$99/month (6 months)</option>
-                                    <option value="monthly-149">$149/month (6 months)</option>
-                                    <option value="monthly-199">$199/month (6 months)</option>
-                                    <option value="monthly-299">$299/month (12 months)</option>
+                                <optgroup label="Monthly Payment Plan" id="monthly-options">
+                                    <option value="monthly-59">$59/month (6 months)</option>
+                                    <option value="monthly-89">$89/month (6 months)</option>
+                                    <option value="monthly-129">$129/month (6 months)</option>
+                                    <option value="monthly-179">$179/month (12 months)</option>
                                 </optgroup>
                                 <option value="negotiate">Let's negotiate pricing</option>
                             </select>

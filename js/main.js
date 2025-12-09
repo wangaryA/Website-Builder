@@ -323,6 +323,124 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // ===================================
+    // DYNAMIC PRICING BASED ON BUSINESS TYPE
+    // ===================================
+    const businessSelect = document.getElementById('business');
+    const budgetSelect = document.getElementById('budget');
+    const pricingHint = document.getElementById('pricing-hint');
+
+    // Pricing tiers based on business type
+    const pricingTiers = {
+        // Starter tier - smaller businesses, lower revenue
+        starter: {
+            onetime: [
+                { value: '200-350', label: '$200 - $350' },
+                { value: '350-500', label: '$350 - $500' },
+                { value: '500-700', label: '$500 - $700' },
+                { value: '700+', label: '$700+' }
+            ],
+            monthly: [
+                { value: 'monthly-39', label: '$39/month (6 months)' },
+                { value: 'monthly-59', label: '$59/month (6 months)' },
+                { value: 'monthly-79', label: '$79/month (6 months)' },
+                { value: 'monthly-99', label: '$99/month (12 months)' }
+            ],
+            hint: 'Affordable pricing for small businesses'
+        },
+        // Standard tier - medium businesses
+        standard: {
+            onetime: [
+                { value: '400-600', label: '$400 - $600' },
+                { value: '600-900', label: '$600 - $900' },
+                { value: '900-1200', label: '$900 - $1,200' },
+                { value: '1200+', label: '$1,200+' }
+            ],
+            monthly: [
+                { value: 'monthly-69', label: '$69/month (6 months)' },
+                { value: 'monthly-99', label: '$99/month (6 months)' },
+                { value: 'monthly-139', label: '$139/month (6 months)' },
+                { value: 'monthly-169', label: '$169/month (12 months)' }
+            ],
+            hint: 'Great value for growing businesses'
+        },
+        // Premium tier - larger businesses, higher revenue
+        premium: {
+            onetime: [
+                { value: '600-1000', label: '$600 - $1,000' },
+                { value: '1000-1500', label: '$1,000 - $1,500' },
+                { value: '1500-2500', label: '$1,500 - $2,500' },
+                { value: '2500+', label: '$2,500+' }
+            ],
+            monthly: [
+                { value: 'monthly-99', label: '$99/month (6 months)' },
+                { value: 'monthly-149', label: '$149/month (6 months)' },
+                { value: 'monthly-199', label: '$199/month (6 months)' },
+                { value: 'monthly-299', label: '$299/month (12 months)' }
+            ],
+            hint: 'Premium features for established businesses'
+        }
+    };
+
+    function updatePricingOptions(tier) {
+        if (!budgetSelect || !pricingTiers[tier]) return;
+
+        const pricing = pricingTiers[tier];
+
+        // Clear current options
+        budgetSelect.innerHTML = '<option value="">Select your budget...</option>';
+
+        // Add one-time payment options
+        const onetimeGroup = document.createElement('optgroup');
+        onetimeGroup.label = 'One-Time Payment';
+        pricing.onetime.forEach(option => {
+            const opt = document.createElement('option');
+            opt.value = option.value;
+            opt.textContent = option.label;
+            onetimeGroup.appendChild(opt);
+        });
+        budgetSelect.appendChild(onetimeGroup);
+
+        // Add monthly payment options
+        const monthlyGroup = document.createElement('optgroup');
+        monthlyGroup.label = 'Monthly Payment Plan';
+        pricing.monthly.forEach(option => {
+            const opt = document.createElement('option');
+            opt.value = option.value;
+            opt.textContent = option.label;
+            monthlyGroup.appendChild(opt);
+        });
+        budgetSelect.appendChild(monthlyGroup);
+
+        // Add negotiate option
+        const negotiateOpt = document.createElement('option');
+        negotiateOpt.value = 'negotiate';
+        negotiateOpt.textContent = "Let's negotiate pricing";
+        budgetSelect.appendChild(negotiateOpt);
+
+        // Show pricing hint
+        if (pricingHint) {
+            pricingHint.textContent = pricing.hint;
+            pricingHint.style.display = 'block';
+        }
+    }
+
+    if (businessSelect) {
+        businessSelect.addEventListener('change', function() {
+            const selectedOption = this.options[this.selectedIndex];
+            const tier = selectedOption.getAttribute('data-tier');
+
+            if (tier) {
+                updatePricingOptions(tier);
+            } else {
+                // Reset to default pricing (standard tier)
+                if (pricingHint) {
+                    pricingHint.style.display = 'none';
+                }
+            }
+        });
+    }
+
     // Form submission with Formspree
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
