@@ -323,35 +323,72 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Form submission
+    // Form submission with Formspree
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
 
             const submitBtn = this.querySelector('button[type="submit"]');
             const btnText = submitBtn.querySelector('.btn-text');
             const btnIcon = submitBtn.querySelector('.btn-icon');
 
-            // Animate button
+            // Animate button - sending state
             btnText.textContent = 'Sending...';
+            submitBtn.disabled = true;
             btnIcon.innerHTML = `
                 <svg class="spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
                 </svg>
             `;
 
-            setTimeout(() => {
-                btnText.textContent = 'Sent!';
+            try {
+                const formData = new FormData(this);
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Success state
+                    btnText.textContent = 'Sent!';
+                    btnIcon.innerHTML = `
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                    `;
+                    submitBtn.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
+                    this.reset();
+
+                    setTimeout(() => {
+                        btnText.textContent = 'Send Message';
+                        btnIcon.innerHTML = `
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                            </svg>
+                        `;
+                        submitBtn.style.background = '';
+                        submitBtn.disabled = false;
+                    }, 3000);
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                // Error state
+                btnText.textContent = 'Error - Try Again';
                 btnIcon.innerHTML = `
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="20 6 9 17 4 12"/>
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M15 9l-6 6M9 9l6 6"/>
                     </svg>
                 `;
-                submitBtn.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
+                submitBtn.style.background = 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)';
+                submitBtn.disabled = false;
 
                 setTimeout(() => {
-                    this.reset();
                     btnText.textContent = 'Send Message';
                     btnIcon.innerHTML = `
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -359,8 +396,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         </svg>
                     `;
                     submitBtn.style.background = '';
-                }, 2000);
-            }, 1500);
+                }, 3000);
+            }
         });
     }
 
