@@ -29,6 +29,7 @@
     --barber-gradient: linear-gradient(135deg, #0E0E0F 0%, #C93333 100%);
     --restaurant-gradient: linear-gradient(135deg, #D54B1A 0%, #1F1F1F 100%);
     --flower-gradient: linear-gradient(135deg, #F8C8DC 0%, #E6D5F2 100%);
+    --tattoo-gradient: linear-gradient(135deg, #0a0a0a 0%, #c9a227 100%);
 
     /* Typography */
     --font-display: 'Syne', sans-serif;
@@ -389,6 +390,7 @@ img {
 .demo-dot.barber { background: #C93333; }
 .demo-dot.restaurant { background: #D54B1A; }
 .demo-dot.flower { background: #F8C8DC; }
+.demo-dot.tattoo { background: #c9a227; }
 
 .nav-cta {
     display: flex;
@@ -1220,6 +1222,10 @@ img {
 
 .flower-shop-preview .portfolio-image-inner {
     background: var(--flower-gradient);
+}
+
+.tattoo-shop-preview .portfolio-image-inner {
+    background: var(--tattoo-gradient);
 }
 
 .preview-content {

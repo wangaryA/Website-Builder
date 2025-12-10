@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cipher Ink Studio | Custom Tattoo Art</title>
+    <link rel="stylesheet" href="tattoo-shop.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Demo Banner -->
+    <div class="demo-banner">
+        <span>This is a demo website example</span>
+        <a href="../index.html" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Portfolio
+        </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </span>
+                <span class="logo-text">CIPHER INK</span>
+            </a>
+
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <a href="#booking" class="btn-book">Book Consultation</a>
+
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <div class="ink-splatter splatter-1"></div>
+            <div class="ink-splatter splatter-2"></div>
+            <div class="ink-splatter splatter-3"></div>
+            <div class="grid-overlay"></div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="pulse"></span>
+                Now Booking for January 2025
+            </div>
+
+            <h1 class="hero-title">
+                <span class="line-1">YOUR STORY</span>
+                <span class="line-2">IN <span class="highlight">INK</span></span>
+            </h1>
+
+            <p class="hero-subtitle">
+                Custom tattoo artistry crafted with precision and passion.
+                Every piece tells a story. Let's write yours.
+            </p>
+
+            <div class="hero-ctas">
+                <a href="#booking" class="btn btn-primary">
+                    <span>Book Your Session</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="#gallery" class="btn btn-outline">View Portfolio</a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" data-target="500">0</span>
+                    <span class="stat-label">Tattoos Done</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-target="8">0</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-target="100">0</span>
+                    <span class="stat-label">% Satisfaction</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <div class="image-frame">
+                <img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=600&h=800&fit=crop" alt="Tattoo Artist at Work">
+                <div class="frame-decoration"></div>
+            </div>
+            <div class="floating-tag tag-1">Custom Design</div>
+            <div class="floating-tag tag-2">Fine Line Art</div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span>Scroll to explore</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+                            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+                            <path d="M2 2l7.586 7.586"/>
+                            <circle cx="11" cy="11" r="2"/>
+                        </svg>
+                    </div>
+                    <h3>Custom Artwork</h3>
+                    <p>Every design is uniquely crafted to tell your personal story. No flash, no copies - just original art.</p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M9 12l2 2 4-4"/>
+                            <path d="M12 3a9 9 0 1 0 9 9"/>
+                            <path d="M22 12A10 10 0 0 0 12 2v10z"/>
+                        </svg>
+                    </div>
+                    <h3>Sterile & Safe</h3>
+                    <p>Hospital-grade sterilization, single-use needles, and premium inks. Your safety is our priority.</p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </div>
+                    <h3>Lifetime Touch-ups</h3>
+                    <p>We stand behind our work. Free touch-ups for life on all tattoos done at our studio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-images">
+                    <div class="about-img main-img">
+                        <img src="https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?w=500&h=600&fit=crop" alt="Tattoo Artist">
+                    </div>
+                    <div class="about-img secondary-img">
+                        <img src="https://images.unsplash.com/photo-1542727365-19732a80dcfd?w=300&h=400&fit=crop" alt="Tattoo Close-up">
+                    </div>
+                    <div class="experience-badge">
+                        <span class="years">8+</span>
+                        <span class="text">Years of<br>Experience</span>
+                    </div>
+                </div>
+
+                <div class="about-text">
+                    <span class="section-tag">About the Artist</span>
+                    <h2>Meet Your Artist</h2>
+                    <h3 class="artist-name">Marcus "Cipher" Chen</h3>
+
+                    <p class="lead">Transforming skin into canvas since 2016. Specializing in blackwork, geometric patterns, and fine line realism.</p>
+
+                    <p>What started as a passion for drawing evolved into a lifelong dedication to the art of tattooing. After apprenticing under legendary artists in Tokyo and Berlin, I founded Cipher Ink Studio with one mission: to create meaningful art that stands the test of time.</p>
+
+                    <p>Every tattoo I create is a collaboration between artist and client. Your vision, your story, your skin - my hands, my expertise, our masterpiece.</p>
+
+                    <div class="artist-specialties">
+                        <span class="specialty">Blackwork</span>
+                        <span class="specialty">Fine Line</span>
+                        <span class="specialty">Geometric</span>
+                        <span class="specialty">Realism</span>
+                        <span class="specialty">Cover-ups</span>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="TikTok">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Portfolio</span>
+                <h2>Recent Work</h2>
+                <p>Browse through our latest creations. Click to view full details.</p>
+            </div>
+
+            <div class="gallery-filter">
+                <button class="filter-btn active" data-filter="all">All Work</button>
+                <button class="filter-btn" data-filter="blackwork">Blackwork</button>
+                <button class="filter-btn" data-filter="fineline">Fine Line</button>
+                <button class="filter-btn" data-filter="geometric">Geometric</button>
+                <button class="filter-btn" data-filter="realism">Realism</button>
+                <button class="filter-btn" data-filter="color">Color</button>
+            </div>
+
+            <div class="gallery-grid">
+                <!-- Row 1 -->
+                <div class="gallery-item" data-category="blackwork">
+                    <img src="https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?w=400&h=500&fit=crop" alt="Blackwork Tattoo">
+                    <div class="gallery-overlay">
+                        <span class="category">Blackwork</span>
+                        <h4>Geometric Sleeve</h4>
+                        <span class="status healed">Healed</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="fineline">
+                    <img src="https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=400&h=500&fit=crop" alt="Fine Line Tattoo">
+                    <div class="gallery-overlay">
+                        <span class="category">Fine Line</span>
+                        <h4>Botanical Design</h4>
+                        <span class="status fresh">Fresh</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item large" data-category="geometric">
+                    <img src="https://images.pexels.com/photos/2183132/pexels-photo-2183132.jpeg?auto=compress&cs=tinysrgb?w=600&h=700&fit=crop" alt="Geometric Tattoo">
+                    <div class="gallery-overlay">
+                        <span class="category">Geometric</span>
+                        <h4>Sacred Geometry Back Piece</h4>
+                        <span class="status healed">Healed</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="realism">
+                    <img src="https://images.unsplash.com/photo-1562962230-16e4623d36e6?w=400&h=500&fit=crop" alt="Realism Tattoo">
+                    <div class="gallery-overlay">
+                        <span class="category">Realism</span>
+                        <h4>Portrait Work</h4>
+                        <span class="status fresh">Fresh</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="blackwork">
+                    <img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=400&h=500&fit=crop" alt="Blackwork Piece">
+                    <div class="gallery-overlay">
+                        <span class="category">Blackwork</span>
+                        <h4>Traditional Japanese</h4>
+                        <span class="status healed">Healed</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="color">
+                    <img src="https://images.pexels.com/photos/4125659/pexels-photo-4125659.jpeg?auto=compress&cs=tinysrgb?w=400&h=500&fit=crop" alt="Color Tattoo">
+                    <div class="gallery-overlay">
+                        <span class="category">Color</span>
+                        <h4>Neo-Traditional Rose</h4>
+                        <span class="status fresh">Fresh</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="fineline">
+                    <img src="https://images.pexels.com/photos/4123823/pexels-photo-4123823.jpeg?auto=compress&cs=tinysrgb?w=400&h=500&fit=crop" alt="Fine Line Work">
+                    <div class="gallery-overlay">
+                        <span class="category">Fine Line</span>
+                        <h4>Minimalist Script</h4>
+                        <span class="status healed">Healed</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="geometric">
+                    <img src="https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?w=400&h=500&fit=crop" alt="Geometric Design">
+                    <div class="gallery-overlay">
+                        <span class="category">Geometric</span>
+                        <h4>Mandala Forearm</h4>
+                        <span class="status healed">Healed</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-cta">
+                <p>Follow us on Instagram for daily updates</p>
+                <a href="#" class="btn btn-outline">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                    </svg>
+                    @cipherinkstudio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Healed vs Fresh Section -->
+    <section class="healed-fresh">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Quality Guarantee</span>
+                <h2>Fresh vs Healed</h2>
+                <p>See how our work stands the test of time. All tattoos shown healed 6+ months.</p>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-images">
+                        <div class="comp-img fresh-img">
+                            <img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=350&h=450&fit=crop" alt="Fresh Tattoo">
+                            <span class="label">Fresh</span>
+                        </div>
+                        <div class="comp-img healed-img">
+                            <img src="https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?w=350&h=450&fit=crop" alt="Healed Tattoo">
+                            <span class="label">Healed - 8 months</span>
+                        </div>
+                    </div>
+                    <p class="comparison-note">Lines stay crisp, blacks stay bold. Proper aftercare + quality work = lasting results.</p>
+                </div>
+
+                <div class="comparison-card">
+                    <div class="comparison-images">
+                        <div class="comp-img fresh-img">
+                            <img src="https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=350&h=450&fit=crop" alt="Fresh Fine Line">
+                            <span class="label">Fresh</span>
+                        </div>
+                        <div class="comp-img healed-img">
+                            <img src="https://images.pexels.com/photos/4123823/pexels-photo-4123823.jpeg?auto=compress&cs=tinysrgb?w=350&h=450&fit=crop" alt="Healed Fine Line">
+                            <span class="label">Healed - 1 year</span>
+                        </div>
+                    </div>
+                    <p class="comparison-note">Fine lines designed at proper thickness to maintain clarity as they settle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">What We Offer</span>
+                <h2>Our Services</h2>
+                <p>From small pieces to full sleeves, we've got you covered.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+                            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+                            <path d="M2 2l7.586 7.586"/>
+                        </svg>
+                    </div>
+                    <h3>Custom Tattoos</h3>
+                    <p>Unique designs created just for you. Share your vision, and we'll bring it to life on your skin.</p>
+                    <ul class="service-features">
+                        <li>One-on-one design consultation</li>
+                        <li>Unlimited revisions before session</li>
+                        <li>Your design, never repeated</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="3" y1="9" x2="21" y2="9"/>
+                            <line x1="9" y1="21" x2="9" y2="9"/>
+                        </svg>
+                    </div>
+                    <h3>Flash Designs</h3>
+                    <p>Pre-drawn designs available for same-day sessions. First come, first served - each design done only once.</p>
+                    <ul class="service-features">
+                        <li>Ready-to-go artwork</li>
+                        <li>Walk-in friendly</li>
+                        <li>Exclusive one-time pieces</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                    </div>
+                    <h3>Cover-Ups</h3>
+                    <p>Transform old or unwanted tattoos into beautiful new artwork. Expert techniques for seamless coverage.</p>
+                    <ul class="service-features">
+                        <li>Free cover-up consultation</li>
+                        <li>Strategic design planning</li>
+                        <li>Blast-over options available</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>
+                        </svg>
+                    </div>
+                    <h3>Touch-Ups</h3>
+                    <p>Keep your ink looking fresh. Free touch-ups on all work done at our studio, forever.</p>
+                    <ul class="service-features">
+                        <li>Lifetime guarantee on our work</li>
+                        <li>Color refresh available</li>
+                        <li>Line sharpening</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Investment</span>
+                <h2>Pricing Guide</h2>
+                <p>Quality tattoos are an investment. Here's what to expect.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <div class="price-header">
+                        <h3>Small Pieces</h3>
+                        <p>Palm-sized or smaller</p>
+                    </div>
+                    <div class="price-amount">
+                        <span class="currency">$</span>
+                        <span class="number">150</span>
+                        <span class="suffix">minimum</span>
+                    </div>
+                    <ul class="price-includes">
+                        <li>1-2 hour session</li>
+                        <li>Simple to moderate detail</li>
+                        <li>Consultation included</li>
+                        <li>Aftercare kit provided</li>
+                    </ul>
+                    <a href="#booking" class="btn btn-outline">Book Now</a>
+                </div>
+
+                <div class="price-card featured">
+                    <div class="featured-badge">Most Popular</div>
+                    <div class="price-header">
+                        <h3>Medium Pieces</h3>
+                        <p>Forearm / Upper arm</p>
+                    </div>
+                    <div class="price-amount">
+                        <span class="currency">$</span>
+                        <span class="number">350</span>
+                        <span class="suffix">starting at</span>
+                    </div>
+                    <ul class="price-includes">
+                        <li>3-5 hour session</li>
+                        <li>Detailed custom work</li>
+                        <li>Design consultation</li>
+                        <li>Aftercare kit provided</li>
+                        <li>One free touch-up</li>
+                    </ul>
+                    <a href="#booking" class="btn btn-primary">Book Now</a>
+                </div>
+
+                <div class="price-card">
+                    <div class="price-header">
+                        <h3>Large Pieces</h3>
+                        <p>Half sleeve / Back / Chest</p>
+                    </div>
+                    <div class="price-amount">
+                        <span class="currency">$</span>
+                        <span class="number">180</span>
+                        <span class="suffix">/ hour</span>
+                    </div>
+                    <ul class="price-includes">
+                        <li>Multiple sessions available</li>
+                        <li>Complex custom designs</li>
+                        <li>Ongoing consultations</li>
+                        <li>Priority booking</li>
+                        <li>Lifetime touch-ups</li>
+                    </ul>
+                    <a href="#booking" class="btn btn-outline">Book Now</a>
+                </div>
+            </div>
+
+            <div class="pricing-note">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="16" x2="12" y2="12"/>
+                    <line x1="12" y1="8" x2="12.01" y2="8"/>
+                </svg>
+                <p>All prices are estimates. Final pricing depends on design complexity, placement, and size. A $50 non-refundable deposit is required to book, which goes toward your tattoo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">How It Works</span>
+                <h2>The Process</h2>
+                <p>From idea to ink in four simple steps.</p>
+            </div>
+
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Consultation</h3>
+                        <p>Share your ideas, reference images, and vision. We'll discuss placement, size, style, and timeline.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Design</h3>
+                        <p>I'll create a custom design based on our discussion. You'll receive proofs and we'll refine until perfect.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Session</h3>
+                        <p>On tattoo day, we'll finalize placement, get you comfortable, and bring your design to life.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>Aftercare</h3>
+                        <p>You'll leave with detailed aftercare instructions and an aftercare kit. We follow up to ensure proper healing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Reviews</span>
+                <h2>What Clients Say</h2>
+                <p>Don't just take our word for it.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Marcus understood exactly what I wanted even when I couldn't articulate it. My geometric sleeve is a masterpiece. Every line is perfect."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JK</div>
+                        <div class="author-info">
+                            <span class="author-name">Jake K.</span>
+                            <span class="author-piece">Geometric Sleeve</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"First tattoo and I was so nervous. The studio is immaculate, Marcus was patient, and the whole experience was actually relaxing. I'm already planning my next piece!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SM</div>
+                        <div class="author-info">
+                            <span class="author-name">Sarah M.</span>
+                            <span class="author-piece">Fine Line Floral</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Got a cover-up done that I thought was impossible. Marcus turned my teenage mistake into something I'm proud to show off. True artist."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">DT</div>
+                        <div class="author-info">
+                            <span class="author-name">David T.</span>
+                            <span class="author-piece">Cover-up Piece</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Questions</span>
+                <h2>FAQ</h2>
+                <p>Everything you need to know before your appointment.</p>
+            </div>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How do I book an appointment?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"/>
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Fill out the booking form on this page or DM us on Instagram. Include your idea, preferred size/placement, and reference images if you have them. We'll get back to you within 48 hours to schedule a consultation.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How much does a tattoo cost?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"/>
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our minimum is $150. Small pieces typically range $150-300, medium pieces $350-600, and larger work is $180/hour. Final pricing depends on complexity, detail, and placement. We provide exact quotes after consultation.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Do you do walk-ins?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"/>
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We accept walk-ins for flash designs when we have availability. For custom work, appointments are required. Follow us on Instagram for flash day announcements!</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How should I prepare for my appointment?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"/>
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Get a good night's sleep, eat a full meal before your appointment, stay hydrated, and avoid alcohol for 24 hours. Wear comfortable clothing that provides easy access to the tattoo area. Bring snacks for longer sessions!</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What's the healing process like?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"/>
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Initial healing takes 2-3 weeks. You'll experience some redness, swelling, and peeling - this is normal. Full healing takes 4-6 weeks. We provide detailed aftercare instructions and premium aftercare products with every tattoo.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Do you do cover-ups?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"/>
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! Cover-ups are one of our specialties. Send us a photo of your existing tattoo and we'll let you know what's possible. Some pieces may benefit from laser lightening first - we can recommend trusted partners for this.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="booking">
+        <div class="container">
+            <div class="booking-wrapper">
+                <div class="booking-info">
+                    <span class="section-tag">Get Inked</span>
+                    <h2>Book Your Session</h2>
+                    <p>Ready to start your tattoo journey? Fill out the form and we'll get back to you within 48 hours.</p>
+
+                    <div class="booking-details">
+                        <div class="detail-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <div>
+                                <h4>Location</h4>
+                                <p>123 Ink Street, Arts District<br>Los Angeles, CA 90013</p>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            <div>
+                                <h4>Hours</h4>
+                                <p>Tuesday - Saturday: 12pm - 8pm<br>Sunday - Monday: Closed</p>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <div>
+                                <h4>Contact</h4>
+                                <p>(555) 123-4567<br>hello@cipherink.studio</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="booking-form" id="bookingForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service">Service Type *</label>
+                        <select id="service" name="service" required>
+                            <option value="">Select a service</option>
+                            <option value="custom">Custom Tattoo</option>
+                            <option value="flash">Flash Design</option>
+                            <option value="coverup">Cover-Up</option>
+                            <option value="touchup">Touch-Up</option>
+                            <option value="consultation">Consultation Only</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="placement">Placement</label>
+                            <input type="text" id="placement" name="placement" placeholder="e.g., forearm, back, etc.">
+                        </div>
+                        <div class="form-group">
+                            <label for="size">Approximate Size</label>
+                            <select id="size" name="size">
+                                <option value="">Select size</option>
+                                <option value="small">Small (palm-sized or smaller)</option>
+                                <option value="medium">Medium (forearm/upper arm)</option>
+                                <option value="large">Large (half sleeve/back panel)</option>
+                                <option value="xlarge">Extra Large (full sleeve/back piece)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Describe Your Idea *</label>
+                        <textarea id="description" name="description" rows="4" placeholder="Tell us about your tattoo idea, style preferences, and any reference images you have..." required></textarea>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="firstTattoo">
+                            <span class="checkmark"></span>
+                            This is my first tattoo
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <span>Send Request</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Feed Section -->
+    <section class="instagram-feed">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">@cipherinkstudio</span>
+                <h2>Follow the Journey</h2>
+                <p>Fresh work, behind the scenes, and studio life.</p>
+            </div>
+
+            <div class="insta-grid">
+                <a href="#" class="insta-item">
+                    <img src="https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?w=300&h=300&fit=crop" alt="Instagram Post">
+                    <div class="insta-overlay">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </div>
+                </a>
+                <a href="#" class="insta-item">
+                    <img src="https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=300&h=300&fit=crop" alt="Instagram Post">
+                    <div class="insta-overlay">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </div>
+                </a>
+                <a href="#" class="insta-item">
+                    <img src="https://images.pexels.com/photos/2183132/pexels-photo-2183132.jpeg?auto=compress&cs=tinysrgb?w=300&h=300&fit=crop" alt="Instagram Post">
+                    <div class="insta-overlay">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </div>
+                </a>
+                <a href="#" class="insta-item">
+                    <img src="https://images.unsplash.com/photo-1562962230-16e4623d36e6?w=300&h=300&fit=crop" alt="Instagram Post">
+                    <div class="insta-overlay">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </div>
+                </a>
+                <a href="#" class="insta-item">
+                    <img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=300&h=300&fit=crop" alt="Instagram Post">
+                    <div class="insta-overlay">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </div>
+                </a>
+                <a href="#" class="insta-item">
+                    <img src="https://images.pexels.com/photos/4125659/pexels-photo-4125659.jpeg?auto=compress&cs=tinysrgb?w=300&h=300&fit=crop" alt="Instagram Post">
+                    <div class="insta-overlay">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <span class="section-tag">Get in Touch</span>
+                    <h2>Visit the Studio</h2>
+                    <p>Come see the space, browse flash designs, or just say hi. We love meeting fellow tattoo enthusiasts.</p>
+
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.0!2d-118.24!3d34.04!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDAyJzI0LjAiTiAxMTjCsDE0JzI0LjAiVw!5e0!3m2!1sen!2sus!4v1600000000000!5m2!1sen!2sus"
+                            width="100%"
+                            height="300"
+                            style="border:0; border-radius: 12px;"
+                            allowfullscreen=""
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <h3>Quick Contact</h3>
+                    <form class="quick-contact-form" id="quickContactForm">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" rows="3" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                    </form>
+
+                    <div class="contact-socials">
+                        <p>Or reach out on social:</p>
+                        <div class="social-links">
+                            <a href="#" aria-label="Instagram">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                                </svg>
+                            </a>
+                            <a href="#" aria-label="TikTok">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                                </svg>
+                            </a>
+                            <a href="#" aria-label="Email">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo">
+                        <span class="logo-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5"/>
+                                <path d="M2 12l10 5 10-5"/>
+                            </svg>
+                        </span>
+                        <span class="logo-text">CIPHER INK</span>
+                    </a>
+                    <p>Custom tattoo artistry in the heart of LA. Your story, our ink.</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigate</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#gallery">Gallery</a></li>
+                            <li><a href="#services">Services</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Info</h4>
+                        <ul>
+                            <li><a href="#pricing">Pricing</a></li>
+                            <li><a href="#faq">FAQ</a></li>
+                            <li><a href="#booking">Book Now</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Hours</h4>
+                        <ul class="hours-list">
+                            <li>Tue - Sat: 12pm - 8pm</li>
+                            <li>Sun - Mon: Closed</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Cipher Ink Studio. All rights reserved. This is a demo website.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="TikTok">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Stats counter animation
+        const statNumbers = document.querySelectorAll('.stat-number');
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.dataset.target);
+                    animateCounter(entry.target, target);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statNumbers.forEach(stat => statsObserver.observe(stat));
+
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 30);
+        }
+
+        // Gallery filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                        setTimeout(() => item.style.opacity = '1', 10);
+                    } else {
+                        item.style.opacity = '0';
+                        setTimeout(() => item.style.display = 'none', 300);
+                    }
+                });
+            });
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+
+                // Close all others
+                faqItems.forEach(i => i.classList.remove('active'));
+
+                // Toggle current
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .service-card, .price-card, .testimonial-card, .process-step, .comparison-card').forEach(el => {
+            el.classList.add('animate-on-scroll');
+            scrollObserver.observe(el);
+        });
+
+        // Form submission (demo)
+        document.getElementById('bookingForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Demo form submitted! In a real site, this would send your booking request.');
+        });
+
+        document.getElementById('quickContactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Demo message sent! In a real site, this would send your message.');
+        });
+    </script>
+</body>
+</html>
