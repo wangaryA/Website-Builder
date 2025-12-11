@@ -1988,17 +1988,22 @@ img {
         left: 0;
         right: 0;
         bottom: 0;
-        background: var(--bg-primary);
+        background: #0a0a0b;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 30px;
         transform: translateX(100%);
         transition: var(--transition-base);
+        z-index: 99;
+        opacity: 0;
+        visibility: hidden;
     }
 
     .nav-menu.active {
         transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
     }
 
     .nav-menu .nav-link {
@@ -2011,6 +2016,7 @@ img {
 
     .nav-toggle {
         display: flex;
+        z-index: 101;
     }
 
     .nav-toggle.active span:nth-child(1) {
