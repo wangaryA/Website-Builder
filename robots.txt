@@ -1,0 +1,11 @@
+# Robots.txt for Webgari Website Builder
+# https://wangarya.github.io/Website-Builder/
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://wangarya.github.io/Website-Builder/sitemap.xml
+
+# Crawl-delay (optional, be respectful to crawlers)
+Crawl-delay: 1
