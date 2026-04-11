@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Multiplayer Snake Game | Webgari Dev Blog</title>
+    <meta name="description" content="How I built a 3D multiplayer Snake game with React, Three.js, Node.js, Supabase, WebSockets, Google OAuth, room codes, and a global leaderboard.">
+    <meta name="author" content="Webgari">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#6366f1">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .post-hero { min-height: 60vh; display: flex; align-items: flex-end; padding: 140px 0 80px; position: relative; }
+        .post-hero-inner { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-padding); width: 100%; }
+        .back-btn { display: inline-flex; align-items: center; gap: 8px; color: var(--text-secondary); font-size: 0.9rem; font-weight: 500; margin-bottom: 2.5rem; transition: var(--transition-fast); text-decoration: none; }
+        .back-btn svg { width: 16px; height: 16px; transition: var(--transition-fast); }
+        .back-btn:hover { color: var(--text-primary); }
+        .back-btn:hover svg { transform: translateX(-4px); }
+        .post-category { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #6366f1; margin-bottom: 1.2rem; display: block; }
+        .post-title { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 2rem; max-width: 900px; }
+        .post-meta-row { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+        .post-meta-item { display: flex; align-items: center; gap: 0.5rem; color: var(--text-muted); font-size: 0.875rem; }
+        .post-meta-item svg { width: 14px; height: 14px; stroke: var(--text-muted); }
+        .post-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .post-tag { background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.8rem; font-weight: 500; padding: 5px 14px; border-radius: 100px; }
+        .post-accent-bar { height: 2px; background: linear-gradient(90deg, #6366f1, #06b6d4, transparent); margin-bottom: 80px; }
+        .post-content { max-width: 780px; margin: 0 auto; padding: 0 var(--container-padding) 120px; }
+        .post-section { margin-bottom: 4rem; }
+        .post-section-label { display: flex; align-items: center; gap: 1rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-primary); margin-bottom: 1.5rem; }
+        .post-section-label::after { content: ''; flex: 1; height: 1px; background: var(--border-color); }
+        .post-section h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1.25rem; color: var(--text-primary); }
+        .post-section p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.2rem; }
+        .post-section p strong { color: var(--text-primary); font-weight: 600; }
+        .post-section ul, .post-section ol { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; padding-left: 1.5rem; margin-bottom: 1.2rem; }
+        .post-section li { margin-bottom: 0.5rem; }
+        .tech-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+        .tech-item { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; padding: 1.25rem 1.5rem; transition: var(--transition-fast); }
+        .tech-item:hover { border-color: var(--border-color-hover); transform: translateY(-3px); }
+        .tech-item-name { font-family: var(--font-display); font-weight: 600; font-size: 1rem; color: var(--text-primary); margin-bottom: 0.25rem; }
+        .tech-item-role { font-size: 0.8rem; color: var(--text-muted); }
+        .post-callout { background: var(--accent-gradient-subtle); border: 1px solid rgba(99,102,241,0.2); border-left: 3px solid var(--accent-primary); border-radius: 12px; padding: 1.5rem 1.75rem; margin: 2rem 0; }
+        .post-callout p { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; margin: 0; }
+        .post-callout p strong { color: var(--accent-primary); }
+        .post-nav { border-top: 1px solid var(--border-color); padding-top: 3rem; margin-top: 4rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+        .post-nav-link { display: flex; align-items: center; gap: 0.75rem; color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: var(--transition-fast); max-width: 240px; }
+        .post-nav-link:hover { color: var(--text-primary); }
+        .post-nav-link svg { width: 18px; height: 18px; flex-shrink: 0; }
+        .post-nav-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); display: block; margin-bottom: 0.25rem; }
+        .post-nav-title { font-weight: 600; color: inherit; }
+        .arch-diagram { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 1.5rem 0; display: flex; flex-direction: column; gap: 0.75rem; }
+        .arch-row { display: flex; align-items: center; gap: 1rem; }
+        .arch-node { background: var(--bg-card-hover); border: 1px solid var(--border-color); border-radius: 10px; padding: 0.6rem 1.2rem; font-size: 0.875rem; font-weight: 600; color: var(--text-primary); white-space: nowrap; }
+        .arch-node.accent { background: rgba(99,102,241,0.15); border-color: rgba(99,102,241,0.3); color: var(--accent-primary); }
+        .arch-arrow { color: var(--text-muted); font-size: 1.2rem; flex-shrink: 0; }
+        @media (max-width: 768px) {
+            .post-meta-row { gap: 1rem; }
+            .tech-grid { grid-template-columns: repeat(2, 1fr); }
+            .post-nav { flex-direction: column; align-items: flex-start; }
+            .arch-row { flex-wrap: wrap; }
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <div class="bg-grid"></div>
+    <div class="gradient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-wrapper">
+                    <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+                        <path d="M20 0L40 20L20 40L0 20L20 0Z" fill="currentColor"/>
+                        <path d="M20 8L32 20L20 32L8 20L20 8Z" fill="url(#logoGrad)" opacity="0.6"/>
+                        <defs>
+                            <linearGradient id="logoGrad" x1="8" y1="8" x2="32" y2="32">
+                                <stop offset="0%" stop-color="#6366f1"/>
+                                <stop offset="100%" stop-color="#a855f7"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="logo-text">Webgari<span class="logo-accent">.</span></span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link"><span data-text="Home">Home</span></a></li>
+                <li><a href="../index.html#services" class="nav-link"><span data-text="Services">Services</span></a></li>
+                <li><a href="../index.html#portfolio" class="nav-link"><span data-text="Work">Work</span></a></li>
+                <li><a href="../about.html" class="nav-link"><span data-text="About">About</span></a></li>
+                <li><a href="index.html" class="nav-link"><span data-text="Blog">Blog</span></a></li>
+                <li class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle"><span data-text="Demos">Demos</span> <span class="arrow"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../examples/nail-tech.html"><span class="demo-dot beauty"></span>Nail Tech</a></li>
+                        <li><a href="../examples/barbershop.html"><span class="demo-dot barber"></span>Barbershop</a></li>
+                        <li><a href="../examples/restaurant.html"><span class="demo-dot restaurant"></span>Restaurant</a></li>
+                        <li><a href="../examples/flower-shop.html"><span class="demo-dot flower"></span>Flower Shop</a></li>
+                        <li><a href="../examples/tattoo-shop.html"><span class="demo-dot tattoo"></span>Tattoo Studio</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <a href="../index.html#contact" class="nav-cta">
+                <span>Let's Talk</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="post-hero">
+        <div class="post-hero-inner">
+            <a href="index.html" class="back-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 5l-7 7 7 7"/>
+                </svg>
+                Back to Blog
+            </a>
+            <span class="post-category">Game / Full Stack</span>
+            <h1 class="post-title">3D Multiplayer Snake Game</h1>
+            <div class="post-meta-row">
+                <span class="post-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                    February 2024
+                </span>
+                <span class="post-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    5 min read
+                </span>
+            </div>
+            <div class="post-tags">
+                <span class="post-tag">React</span>
+                <span class="post-tag">Three.js</span>
+                <span class="post-tag">Node.js</span>
+                <span class="post-tag">WebSockets</span>
+                <span class="post-tag">Supabase</span>
+                <span class="post-tag">Google OAuth</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="post-accent-bar"></div>
+
+    <div class="post-content">
+
+        <div class="post-section">
+            <div class="post-section-label">Overview</div>
+            <h2>What this project is</h2>
+            <p>Snake is a solved game. Everyone's built it. So I asked: what if it was 3D? What if it was multiplayer? What if your score actually persisted and competed against everyone who'd ever played?</p>
+            <p>The result is a 3D Snake game where players join via room codes, compete on a Three.js-rendered 3D grid, authenticate with Google OAuth, and post scores to a global Supabase leaderboard. It's the kind of thing that starts as a weekend project and turns into three weeks of "just one more feature."</p>
+            <p>It's also the project that made me properly understand real-time systems. Not "I read about WebSockets" understand — "I watched two browser tabs desync and had to figure out why" understand.</p>
+        </div>
+
+        <div class="post-section">
+            <div class="post-section-label">The Build</div>
+            <h2>How I built it</h2>
+            <p>The architecture splits into three layers:</p>
+
+            <div class="arch-diagram">
+                <div class="arch-row">
+                    <div class="arch-node accent">React + Three.js</div>
+                    <div class="arch-arrow">→</div>
+                    <div class="arch-node">Renders 3D scene, handles input</div>
+                </div>
+                <div class="arch-row">
+                    <div class="arch-node accent">Node.js + WebSocket</div>
+                    <div class="arch-arrow">→</div>
+                    <div class="arch-node">Authoritative game state server</div>
+                </div>
+                <div class="arch-row">
+                    <div class="arch-node accent">Supabase</div>
+                    <div class="arch-arrow">→</div>
+                    <div class="arch-node">Auth (Google OAuth) + Leaderboard DB</div>
+                </div>
+            </div>
+
+            <p><strong>Three.js for the 3D grid</strong> was the part I was most nervous about. I'd never done 3D in the browser before. The learning curve is real — Three.js has its own concepts (scene, camera, renderer, geometry, material, mesh) that don't map cleanly to anything in React-land. Once you internalize that the render loop is separate from the React component lifecycle, it starts to click.</p>
+            <p>The snake segments are boxes (BoxGeometry) with an emissive material so they glow slightly. The food is a small sphere that pulses using a simple sine-wave animation in the render loop. The camera is positioned isometrically and pans smoothly when the snake approaches the edge of the grid.</p>
+
+            <p><strong>The WebSocket server</strong> runs on Node.js and is the single source of truth for game state. Every player sends their input (direction changes) to the server. The server runs the game tick at 100ms intervals, resolves collisions, updates positions, and broadcasts the new state to all clients in the room. Clients just render what the server tells them.</p>
+
+            <div class="post-callout">
+                <p><strong>The hardest bug:</strong> Two players in the same room would occasionally see different food positions. Root cause — I was initializing food position on the client side with Math.random() instead of having the server generate and broadcast it. Classic distributed state mistake. Always let the server own the state.</p>
+            </div>
+
+            <p><strong>Room codes</strong> are just random 4-character strings (e.g. "X7KP") generated on the server when a player creates a room. The server maintains a Map of room code → game state. When a second player enters the same code, they join the existing room. Simple, but it makes the game feel like a real product.</p>
+
+            <p><strong>Supabase</strong> handles two things: Google OAuth (via Supabase Auth) and the leaderboard table. The leaderboard is a simple Postgres table with player_id, display_name, score, and timestamp. At game over, the client posts the score to a Supabase edge function that validates it server-side (you can't trust clients with scores) before writing to the DB.</p>
+        </div>
+
+        <div class="post-section">
+            <div class="post-section-label">Tech Stack</div>
+            <h2>What's powering the game</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-item-name">React</div>
+                    <div class="tech-item-role">UI shell & state management</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-item-name">Three.js</div>
+                    <div class="tech-item-role">3D rendering in browser</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-item-name">Node.js</div>
+                    <div class="tech-item-role">Game server</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-item-name">WebSockets</div>
+                    <div class="tech-item-role">Real-time sync</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-item-name">Supabase</div>
+                    <div class="tech-item-role">Auth + leaderboard DB</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-item-name">Google OAuth</div>
+                    <div class="tech-item-role">Player authentication</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="post-section">
+            <div class="post-section-label">Lessons Learned</div>
+            <h2>What I'd do differently</h2>
+            <p>Real-time multiplayer is a discipline, not a feature. The naive approach (sync everything, all the time) doesn't scale. Even at 2 players the latency was noticeable when I wasn't running the server locally. I'd invest more time upfront in a proper game loop with client-side prediction.</p>
+            <p><strong>Three.js + React is friction.</strong> React wants to own the DOM. Three.js wants to own a canvas and run its own render loop. Getting them to coexist gracefully took more effort than expected. If I built this again, I'd look at react-three-fiber which is designed to solve exactly this integration problem.</p>
+            <p>The OAuth flow with Supabase was genuinely painless. Google OAuth + Supabase = about 45 minutes of work including reading the docs. Highly recommend Supabase Auth for any project that needs social login without running your own auth server.</p>
+            <p>Room codes were a late addition but might be the best feature. They made the game immediately shareable — you can just text someone a 4-letter code and they're in your game. No account required just to join. Simple beats clever every time.</p>
+        </div>
+
+        <div class="post-nav">
+            <a href="cybersecurity-home-lab.html" class="post-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+                <div>
+                    <span class="post-nav-label">Previous</span>
+                    <span class="post-nav-title">Cybersecurity Home Lab</span>
+                </div>
+            </a>
+            <a href="website-audit-tool.html" class="post-nav-link">
+                <div style="text-align:right">
+                    <span class="post-nav-label">Next Post</span>
+                    <span class="post-nav-title">Website Audit Tool</span>
+                </div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="footer-logo">
+                        <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+                            <path d="M20 0L40 20L20 40L0 20L20 0Z" fill="currentColor"/>
+                            <path d="M20 8L32 20L20 32L8 20L20 8Z" fill="url(#footerLogoGrad)" opacity="0.6"/>
+                            <defs>
+                                <linearGradient id="footerLogoGrad" x1="8" y1="8" x2="32" y2="32">
+                                    <stop offset="0%" stop-color="#6366f1"/>
+                                    <stop offset="100%" stop-color="#a855f7"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <span>Webgari<span class="logo-accent">.</span></span>
+                    </a>
+                    <p>Crafting digital experiences that convert visitors into customers.</p>
+                </div>
+                <div class="footer-nav">
+                    <div class="footer-col">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="../index.html">Home</a></li>
+                            <li><a href="../index.html#services">Services</a></li>
+                            <li><a href="../index.html#portfolio">Work</a></li>
+                            <li><a href="../index.html#contact">Contact</a></li>
+                            <li><a href="index.html">Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Demos</h4>
+                        <ul>
+                            <li><a href="../examples/nail-tech.html">Nail Tech</a></li>
+                            <li><a href="../examples/barbershop.html">Barbershop</a></li>
+                            <li><a href="../examples/restaurant.html">Restaurant</a></li>
+                            <li><a href="../examples/flower-shop.html">Flower Shop</a></li>
+                            <li><a href="../examples/tattoo-shop.html">Tattoo Studio</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Webgari. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="mailto:wangariaberra@gmail.com">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

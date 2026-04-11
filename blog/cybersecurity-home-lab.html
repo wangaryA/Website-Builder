@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Home Lab | Webgari Dev Blog</title>
+    <meta name="description" content="How I built a home cybersecurity lab with a Raspberry Pi, Kali Linux attacker machine, Wireshark, Nmap, Zphisher, and a live terminal embedded in a demo site.">
+    <meta name="author" content="Webgari">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#6366f1">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .post-hero { min-height: 60vh; display: flex; align-items: flex-end; padding: 140px 0 80px; position: relative; }
+        .post-hero-inner { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-padding); width: 100%; }
+        .back-btn { display: inline-flex; align-items: center; gap: 8px; color: var(--text-secondary); font-size: 0.9rem; font-weight: 500; margin-bottom: 2.5rem; transition: var(--transition-fast); text-decoration: none; }
+        .back-btn svg { width: 16px; height: 16px; transition: var(--transition-fast); }
+        .back-btn:hover { color: var(--text-primary); }
+        .back-btn:hover svg { transform: translateX(-4px); }
+        .post-category { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #10b981; margin-bottom: 1.2rem; display: block; }
+        .post-title { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 2rem; max-width: 900px; }
+        .post-meta-row { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+        .post-meta-item { display: flex; align-items: center; gap: 0.5rem; color: var(--text-muted); font-size: 0.875rem; }
+        .post-meta-item svg { width: 14px; height: 14px; stroke: var(--text-muted); }
+        .post-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .post-tag { background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.8rem; font-weight: 500; padding: 5px 14px; border-radius: 100px; }
+        .post-accent-bar { height: 2px; background: linear-gradient(90deg, #10b981, #06b6d4, transparent); margin-bottom: 80px; }
+        .post-content { max-width: 780px; margin: 0 auto; padding: 0 var(--container-padding) 120px; }
+        .post-section { margin-bottom: 4rem; }
+        .post-section-label { display: flex; align-items: center; gap: 1rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-primary); margin-bottom: 1.5rem; }
+        .post-section-label::after { content: ''; flex: 1; height: 1px; background: var(--border-color); }
+        .post-section h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1.25rem; color: var(--text-primary); }
+        .post-section p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.2rem; }
+        .post-section p strong { color: var(--text-primary); font-weight: 600; }
+        .post-section ul, .post-section ol { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; padding-left: 1.5rem; margin-bottom: 1.2rem; }
+        .post-section li { margin-bottom: 0.5rem; }
+        .tech-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+        .tech-item { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; padding: 1.25rem 1.5rem; transition: var(--transition-fast); }
+        .tech-item:hover { border-color: var(--border-color-hover); transform: translateY(-3px); }
+        .tech-item-name { font-family: var(--font-display); font-weight: 600; font-size: 1rem; color: var(--text-primary); margin-bottom: 0.25rem; }
+        .tech-item-role { font-size: 0.8rem; color: var(--text-muted); }
+        .post-callout { background: var(--accent-gradient-subtle); border: 1px solid rgba(99,102,241,0.2); border-left: 3px solid var(--accent-primary); border-radius: 12px; padding: 1.5rem 1.75rem; margin: 2rem 0; }
+        .post-callout p { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; margin: 0; }
+        .post-callout p strong { color: var(--accent-primary); }
+        .post-nav { border-top: 1px solid var(--border-color); padding-top: 3rem; margin-top: 4rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+        .post-nav-link { display: flex; align-items: center; gap: 0.75rem; color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: var(--transition-fast); max-width: 240px; }
+        .post-nav-link:hover { color: var(--text-primary); }
+        .post-nav-link svg { width: 18px; height: 18px; flex-shrink: 0; }
+        .post-nav-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); display: block; margin-bottom: 0.25rem; }
+        .post-nav-title { font-weight: 600; color: inherit; }
+
+        /* Terminal-style code block */
+        .terminal-block {
+            background: #0d0d0f;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+        }
+
+        .terminal-block .prompt {
+            color: #10b981;
+        }
+
+        .terminal-block .cmd {
+            color: #e2e8f0;
+        }
+
+        .terminal-block .comment {
+            color: #64748b;
+        }
+
+        .terminal-line {
+            display: block;
+            margin-bottom: 0.3rem;
+            white-space: pre;
+        }
+
+        @media (max-width: 768px) {
+            .post-meta-row { gap: 1rem; }
+            .tech-grid { grid-template-columns: repeat(2, 1fr); }
+            .post-nav { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <div class="bg-grid"></div>
+    <div class="gradient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-wrapper">
+                    <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+                        <path d="M20 0L40 20L20 40L0 20L20 0Z" fill="currentColor"/>
+                        <path d="M20 8L32 20L20 32L8 20L20 8Z" fill="url(#logoGrad)" opacity="0.6"/>
+                        <defs>
+                            <linearGradient id="logoGrad" x1="8" y1="8" x2="32" y2="32">
+                                <stop offset="0%" stop-color="#6366f1"/>
+                                <stop offset="100%" stop-color="#a855f7"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="logo-text">Webgari<span class="logo-accent">.</span></span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link"><span data-text="Home">Home</span></a></li>
+                <li><a href="../index.html#services" class="nav-link"><span data-text="Services">Services</span></a></li>
+                <li><a href="../index.html#portfolio" class="nav-link"><span data-text="Work">Work</span></a></li>
+                <li><a href="../about.html" class="nav-link"><span data-text="About">About</span></a></li>
+                <li><a href="index.html" class="nav-link"><span data-text="Blog">Blog</span></a></li>
+                <li class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle"><span data-text="Demos">Demos</span> <span class="arrow"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../examples/nail-tech.html"><span class="demo-dot beauty"></span>Nail Tech</a></li>
+                        <li><a href="../examples/barbershop.html"><span class="demo-dot barber"></span>Barbershop</a></li>
+                        <li><a href="../examples/restaurant.html"><span class="demo-dot restaurant"></span>Restaurant</a></li>
+                        <li><a href="../examples/flower-shop.html"><span class="demo-dot flower"></span>Flower Shop</a></li>
+                        <li><a href="../examples/tattoo-shop.html"><span class="demo-dot tattoo"></span>Tattoo Studio</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <a href="../index.html#contact" class="nav-cta">
+                <span>Let's Talk</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="post-hero">
+        <div class="post-hero-inner">
+            <a href="index.html" class="back-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 5l-7 7 7 7"/>
+                </svg>
+                Back to Blog
+            </a>
+            <span class="post-category">Security Lab</span>
+            <h1 class="post-title">Cybersecurity Home Lab</h1>
+            <div class="post-meta-row">
+                <span class="post-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                    January 2024
+                </span>
+                <span class="post-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    6 min read
+                </span>
+            </div>
+            <div class="post-tags">
+                <span class="post-tag">Raspberry Pi 4</span>
+                <span class="post-tag">Kali Linux</span>
+                <span class="post-tag">Wireshark</span>
+                <span class="post-tag">Nmap</span>
+                <span class="post-tag">Zphisher</span>
+                <span class="post-tag">ttyd</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="post-accent-bar"></div>
+
+    <div class="post-content">
+
+        <div class="post-section">
+            <div class="post-section-label">Overview</div>
+            <h2>What this project is</h2>
+            <p>Most cybersecurity courses teach you about attacks in theory. You read about how phishing works, watch a demo, and move on. I wanted to actually <em>do it</em> — in a controlled environment where the only victim was my own hardware.</p>
+            <p>This home lab is a mini network I built specifically for offensive and defensive security practice. It has an attacker machine, a victim machine, and a router creating an isolated subnet that keeps everything off my main home network. The whole thing cost under $150 in hardware, most of which I already had.</p>
+            <p>The bonus piece: I embedded a <strong>ttyd live terminal</strong> in a demo website so people could see a real terminal session running in the browser — because that's exactly the kind of thing that makes people stop and ask "wait, how does that work?"</p>
+        </div>
+
+        <div class="post-section">
+            <div class="post-section-label">The Build</div>
+            <h2>How I set it up</h2>
+            <p>The lab has three main components:</p>
+
+            <p><strong>1. The Victim Machine — Raspberry Pi 4 running Ubuntu Server</strong></p>
+            <p>The Pi runs Ubuntu Server (headless — no display, SSH only). It acts as the target for network scans, the machine I run Wireshark on to capture traffic, and the host for the ttyd terminal server. It's always on, pulls about 3W of power, and lives on my desk.</p>
+
+            <p><strong>2. The Isolated Network — Wavlink Router</strong></p>
+            <p>The Wavlink router creates a completely separate subnet (192.168.10.0/24) that's isolated from my home network. Nothing on this subnet can reach the internet or my actual devices. This is the most important part — you do not want to run Kali attacks on your production network. The Pi and the Kali machine both connect to this router.</p>
+
+            <p><strong>3. The Attacker Machine — Kali Linux</strong></p>
+            <p>My laptop dual-boots Kali Linux. From the Kali side, I run all the offensive tools: Nmap for network discovery, Wireshark for packet capture, and Zphisher for simulating phishing attacks.</p>
+
+            <p>Here's a typical session — scanning the victim Pi from the Kali machine:</p>
+            <div class="terminal-block">
+                <span class="terminal-line"><span class="prompt">┌──(kali㉿kali)-[~]</span></span>
+                <span class="terminal-line"><span class="prompt">└─$</span><span class="cmd"> nmap -sV -O 192.168.10.105</span></span>
+                <span class="terminal-line"><span class="comment"># Discover open ports and OS fingerprint on the Pi</span></span>
+                <span class="terminal-line"> </span>
+                <span class="terminal-line"><span class="prompt">┌──(kali㉿kali)-[~]</span></span>
+                <span class="terminal-line"><span class="prompt">└─$</span><span class="cmd"> wireshark &</span></span>
+                <span class="terminal-line"><span class="comment"># Launch Wireshark to capture the traffic in real time</span></span>
+            </div>
+
+            <p><strong>The ttyd integration</strong> is what made this a web project, not just a hardware project. ttyd is a tool that exposes a terminal as a web page over HTTP. I ran it on the Pi, set it to share a restricted shell session, and embedded it in a demo site via an iframe. Visiting the site, you see a live terminal — not a recording, not a GIF, an actual shell you can watch run commands in real time.</p>
+
+            <div class="post-callout">
+                <p><strong>Security note on ttyd:</strong> Never expose ttyd to the public internet without authentication. The demo I built ran on localhost and was only shown during demos. For anything facing the web, you'd need auth + TLS + rate limiting at minimum.</p>
+            </div>
+
+            <p><strong>Zphisher</strong> is a phishing framework that generates convincing clone pages of major sites (Instagram, Gmail, Netflix, etc.) and captures credentials when someone enters them. Running it in the isolated lab — with myself as the only target — was eye-opening. The pages look <em>exactly</em> like the real thing. Without checking the URL bar, most people would not catch it.</p>
+        </div>
+
+        <div class="post-section">
+            <div class="post-section-label">Tech Stack</div>
+            <h2>What's running in the lab</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-item-name">Raspberry Pi 4</div>
+                    <div class="tech-item-role">Victim / monitor node</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-item-name">Ubuntu Server</div>
+                    <div class="tech-item-role">Pi OS (headless)</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-item-name">Wavlink Router</div>
+                    <div class="tech-item-role">Isolated subnet</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-item-name">Kali Linux</div>
+                    <div class="tech-item-role">Attacker machine OS</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-item-name">Wireshark</div>
+                    <div class="tech-item-role">Packet capture</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-item-name">Nmap</div>
+                    <div class="tech-item-role">Network scanning</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-item-name">Zphisher</div>
+                    <div class="tech-item-role">Phishing simulation</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-item-name">ttyd</div>
+                    <div class="tech-item-role">Browser terminal</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="post-section">
+            <div class="post-section-label">Lessons Learned</div>
+            <h2>What hit different doing it for real</h2>
+            <p>Network segmentation is not optional — it's the first thing you set up. I made the mistake of initially running some Nmap scans without the isolated router, and my home router's logs lit up. Lesson learned: always isolate first.</p>
+            <p><strong>Wireshark is humbling.</strong> Seeing the raw packets for something as simple as an HTTP GET request makes everything you thought you knew about networking feel shallow. When you can see the actual bytes flowing between machines, abstractions stop being abstract.</p>
+            <p>The Zphisher experience genuinely changed how I think about phishing awareness training. You can tell people "phishing pages look real" all you want, but watching someone interact with a cloned login page in real time is a different kind of lesson. That insight directly shaped the Phishing Awareness Capstone project I built later.</p>
+            <p>The ttyd-in-browser demo was a hit whenever I showed it to people. Non-technical people do a double take when they see a terminal running inside a webpage. It's a great conversation starter and makes the abstract concept of "server-side execution" suddenly very concrete.</p>
+        </div>
+
+        <div class="post-nav">
+            <a href="aqua-skin-body-studio.html" class="post-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+                <div>
+                    <span class="post-nav-label">Previous</span>
+                    <span class="post-nav-title">Aqua Skin & Body Studio</span>
+                </div>
+            </a>
+            <a href="3d-multiplayer-snake.html" class="post-nav-link">
+                <div style="text-align:right">
+                    <span class="post-nav-label">Next Post</span>
+                    <span class="post-nav-title">3D Multiplayer Snake Game</span>
+                </div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="footer-logo">
+                        <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+                            <path d="M20 0L40 20L20 40L0 20L20 0Z" fill="currentColor"/>
+                            <path d="M20 8L32 20L20 32L8 20L20 8Z" fill="url(#footerLogoGrad)" opacity="0.6"/>
+                            <defs>
+                                <linearGradient id="footerLogoGrad" x1="8" y1="8" x2="32" y2="32">
+                                    <stop offset="0%" stop-color="#6366f1"/>
+                                    <stop offset="100%" stop-color="#a855f7"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <span>Webgari<span class="logo-accent">.</span></span>
+                    </a>
+                    <p>Crafting digital experiences that convert visitors into customers.</p>
+                </div>
+                <div class="footer-nav">
+                    <div class="footer-col">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="../index.html">Home</a></li>
+                            <li><a href="../index.html#services">Services</a></li>
+                            <li><a href="../index.html#portfolio">Work</a></li>
+                            <li><a href="../index.html#contact">Contact</a></li>
+                            <li><a href="index.html">Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Demos</h4>
+                        <ul>
+                            <li><a href="../examples/nail-tech.html">Nail Tech</a></li>
+                            <li><a href="../examples/barbershop.html">Barbershop</a></li>
+                            <li><a href="../examples/restaurant.html">Restaurant</a></li>
+                            <li><a href="../examples/flower-shop.html">Flower Shop</a></li>
+                            <li><a href="../examples/tattoo-shop.html">Tattoo Studio</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Webgari. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="mailto:wangariaberra@gmail.com">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

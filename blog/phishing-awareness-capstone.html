@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Awareness Capstone | Webgari Dev Blog</title>
+    <meta name="description" content="How I built an interactive React site to train Port of Seattle internship candidates on phishing awareness — simulated attacks, real stakes, actual learning.">
+    <meta name="author" content="Webgari">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#6366f1">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .post-hero { min-height: 60vh; display: flex; align-items: flex-end; padding: 140px 0 80px; position: relative; }
+        .post-hero-inner { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-padding); width: 100%; }
+        .back-btn { display: inline-flex; align-items: center; gap: 8px; color: var(--text-secondary); font-size: 0.9rem; font-weight: 500; margin-bottom: 2.5rem; transition: var(--transition-fast); text-decoration: none; }
+        .back-btn svg { width: 16px; height: 16px; transition: var(--transition-fast); }
+        .back-btn:hover { color: var(--text-primary); }
+        .back-btn:hover svg { transform: translateX(-4px); }
+        .post-category { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #ef4444; margin-bottom: 1.2rem; display: block; }
+        .post-title { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 2rem; max-width: 900px; }
+        .post-meta-row { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+        .post-meta-item { display: flex; align-items: center; gap: 0.5rem; color: var(--text-muted); font-size: 0.875rem; }
+        .post-meta-item svg { width: 14px; height: 14px; stroke: var(--text-muted); }
+        .post-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .post-tag { background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.8rem; font-weight: 500; padding: 5px 14px; border-radius: 100px; }
+        .post-accent-bar { height: 2px; background: linear-gradient(90deg, #ef4444, #f97316, transparent); margin-bottom: 80px; }
+        .post-content { max-width: 780px; margin: 0 auto; padding: 0 var(--container-padding) 120px; }
+        .post-section { margin-bottom: 4rem; }
+        .post-section-label { display: flex; align-items: center; gap: 1rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-primary); margin-bottom: 1.5rem; }
+        .post-section-label::after { content: ''; flex: 1; height: 1px; background: var(--border-color); }
+        .post-section h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1.25rem; color: var(--text-primary); }
+        .post-section p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.2rem; }
+        .post-section p strong { color: var(--text-primary); font-weight: 600; }
+        .post-section ul, .post-section ol { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; padding-left: 1.5rem; margin-bottom: 1.2rem; }
+        .post-section li { margin-bottom: 0.5rem; }
+        .tech-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+        .tech-item { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; padding: 1.25rem 1.5rem; transition: var(--transition-fast); }
+        .tech-item:hover { border-color: var(--border-color-hover); transform: translateY(-3px); }
+        .tech-item-name { font-family: var(--font-display); font-weight: 600; font-size: 1rem; color: var(--text-primary); margin-bottom: 0.25rem; }
+        .tech-item-role { font-size: 0.8rem; color: var(--text-muted); }
+        .post-callout { background: var(--accent-gradient-subtle); border: 1px solid rgba(99,102,241,0.2); border-left: 3px solid var(--accent-primary); border-radius: 12px; padding: 1.5rem 1.75rem; margin: 2rem 0; }
+        .post-callout p { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; margin: 0; }
+        .post-callout p strong { color: var(--accent-primary); }
+        .post-nav { border-top: 1px solid var(--border-color); padding-top: 3rem; margin-top: 4rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+        .post-nav-link { display: flex; align-items: center; gap: 0.75rem; color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: var(--transition-fast); max-width: 240px; }
+        .post-nav-link:hover { color: var(--text-primary); }
+        .post-nav-link svg { width: 18px; height: 18px; flex-shrink: 0; }
+        .post-nav-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); display: block; margin-bottom: 0.25rem; }
+        .post-nav-title { font-weight: 600; color: inherit; }
+
+        /* Flow diagram */
+        .flow-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin: 1.5rem 0;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+        }
+
+        .flow-step-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .flow-step-num {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .flow-step-line {
+            width: 2px;
+            flex: 1;
+            min-height: 24px;
+            background: var(--border-color);
+            margin: 4px 0;
+        }
+
+        .flow-step-content {
+            padding-bottom: 1.5rem;
+        }
+
+        .flow-step-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+        }
+
+        .flow-step-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .flow-step:last-child .flow-step-line {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .post-meta-row { gap: 1rem; }
+            .tech-grid { grid-template-columns: repeat(2, 1fr); }
+            .post-nav { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <div class="bg-grid"></div>
+    <div class="gradient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-wrapper">
+                    <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+                        <path d="M20 0L40 20L20 40L0 20L20 0Z" fill="currentColor"/>
+                        <path d="M20 8L32 20L20 32L8 20L20 8Z" fill="url(#logoGrad)" opacity="0.6"/>
+                        <defs>
+                            <linearGradient id="logoGrad" x1="8" y1="8" x2="32" y2="32">
+                                <stop offset="0%" stop-color="#6366f1"/>
+                                <stop offset="100%" stop-color="#a855f7"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="logo-text">Webgari<span class="logo-accent">.</span></span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link"><span data-text="Home">Home</span></a></li>
+                <li><a href="../index.html#services" class="nav-link"><span data-text="Services">Services</span></a></li>
+                <li><a href="../index.html#portfolio" class="nav-link"><span data-text="Work">Work</span></a></li>
+                <li><a href="../about.html" class="nav-link"><span data-text="About">About</span></a></li>
+                <li><a href="index.html" class="nav-link"><span data-text="Blog">Blog</span></a></li>
+                <li class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle"><span data-text="Demos">Demos</span> <span class="arrow"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../examples/nail-tech.html"><span class="demo-dot beauty"></span>Nail Tech</a></li>
+                        <li><a href="../examples/barbershop.html"><span class="demo-dot barber"></span>Barbershop</a></li>
+                        <li><a href="../examples/restaurant.html"><span class="demo-dot restaurant"></span>Restaurant</a></li>
+                        <li><a href="../examples/flower-shop.html"><span class="demo-dot flower"></span>Flower Shop</a></li>
+                        <li><a href="../examples/tattoo-shop.html"><span class="demo-dot tattoo"></span>Tattoo Studio</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <a href="../index.html#contact" class="nav-cta">
+                <span>Let's Talk</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="post-hero">
+        <div class="post-hero-inner">
+            <a href="index.html" class="back-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 5l-7 7 7 7"/>
+                </svg>
+                Back to Blog
+            </a>
+            <span class="post-category">Security / Education</span>
+            <h1 class="post-title">Phishing Awareness Capstone</h1>
+            <div class="post-meta-row">
+                <span class="post-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                    October 2023
+                </span>
+                <span class="post-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    4 min read
+                </span>
+            </div>
+            <div class="post-tags">
+                <span class="post-tag">React</span>
+                <span class="post-tag">Cybersecurity</span>
+                <span class="post-tag">UX Design</span>
+                <span class="post-tag">Education</span>
+                <span class="post-tag">Port of Seattle</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="post-accent-bar"></div>
+
+    <div class="post-content">
+
+        <div class="post-section">
+            <div class="post-section-label">Overview</div>
+            <h2>What this project is</h2>
+            <p>This was a capstone project I built during my cybersecurity program — a training tool designed to teach phishing awareness to Port of Seattle internship candidates.</p>
+            <p>The idea: instead of a slide deck telling people "phishing is bad," walk them through an actual simulated phishing attempt. Let them get tricked. Then show them exactly what they missed and why it worked. Finish with a quiz to lock in the concepts.</p>
+            <p>These were real people who were being considered for real internship positions at a major port authority. The stakes were genuine, which made designing the experience feel more serious than most side projects I've worked on.</p>
+        </div>
+
+        <div class="post-section">
+            <div class="post-section-label">The Build</div>
+            <h2>How I built it</h2>
+            <p>The site is a React SPA with a multi-step flow. Here's how the experience works:</p>
+
+            <div class="flow-steps">
+                <div class="flow-step">
+                    <div class="flow-step-left">
+                        <div class="flow-step-num">1</div>
+                        <div class="flow-step-line"></div>
+                    </div>
+                    <div class="flow-step-content">
+                        <div class="flow-step-title">Introduction screen</div>
+                        <div class="flow-step-desc">Frame it as a "security readiness check." Don't reveal that a simulation is coming — that defeats the purpose.</div>
+                    </div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-step-left">
+                        <div class="flow-step-num">2</div>
+                        <div class="flow-step-line"></div>
+                    </div>
+                    <div class="flow-step-content">
+                        <div class="flow-step-title">Simulated phishing email</div>
+                        <div class="flow-step-desc">A realistic-looking email component, styled to look like a legit Port of Seattle IT notification. Urgency, official branding, a plausible link.</div>
+                    </div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-step-left">
+                        <div class="flow-step-num">3</div>
+                        <div class="flow-step-line"></div>
+                    </div>
+                    <div class="flow-step-content">
+                        <div class="flow-step-title">Fake login page</div>
+                        <div class="flow-step-desc">Clicking the link takes them to a convincing login page. If they enter credentials, the site captures that they "fell for it" and stores the result in React state.</div>
+                    </div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-step-left">
+                        <div class="flow-step-num">4</div>
+                        <div class="flow-step-line"></div>
+                    </div>
+                    <div class="flow-step-content">
+                        <div class="flow-step-title">Reveal + debrief</div>
+                        <div class="flow-step-desc">The curtain drops. The page explains this was a simulation, shows the red flags they should have noticed (hover state shows malicious URL, mismatched sender domain, urgency language), and explains why each one matters.</div>
+                    </div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-step-left">
+                        <div class="flow-step-num">5</div>
+                        <div class="flow-step-line"></div>
+                    </div>
+                    <div class="flow-step-content">
+                        <div class="flow-step-title">Quiz</div>
+                        <div class="flow-step-desc">5 multiple-choice questions testing the concepts from the debrief. Score tracked, feedback given immediately per question.</div>
+                    </div>
+                </div>
+            </div>
+
+            <p>The debrief section was the most thoughtful part to design. I used a component that highlights specific parts of the phishing email — hover over the sender address and it shows why the domain is suspicious; hover over the urgency text and it explains the psychological tactic being used. Interactive, not just a wall of text.</p>
+
+            <div class="post-callout">
+                <p><strong>The calibration problem:</strong> The hardest design decision was figuring out how convincing to make the fake login page. Too obvious, and you're not testing anything. Too convincing, and it becomes ethically murky — people genuinely think they've compromised their credentials. I landed on: visually convincing, but with a deliberately mismatched domain in the URL bar that a cautious person would catch.</p>
+            </div>
+
+            <p>No backend needed — all state lives in React. The "did they fall for it?" flag is just useState. The quiz answers are validated client-side. The goal was education, not data collection. Keeping it stateless meant easier deployment and no data privacy concerns.</p>
+        </div>
+
+        <div class="post-section">
+            <div class="post-section-label">Tech Stack</div>
+            <h2>What's under the hood</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-item-name">React</div>
+                    <div class="tech-item-role">Frontend + multi-step flow</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-item-name">React State</div>
+                    <div class="tech-item-role">No backend — all client-side</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-item-name">CSS Modules</div>
+                    <div class="tech-item-role">Component scoped styling</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="post-section">
+            <div class="post-section-label">Lessons Learned</div>
+            <h2>What I took away from this</h2>
+            <p>Building <em>effective</em> security training is a UX problem as much as it is a content problem. The information matters, but if the delivery is dry, people tune out. The simulation format worked because it created a real moment of "oh I would have clicked that" — that emotional response is what makes the lesson stick.</p>
+            <p><strong>The reveal timing matters enormously.</strong> Show it too soon and people feel cheated. Show it too late and the discomfort sits without resolution. I iterated on the reveal flow several times — the version that worked best gave people about 10 seconds on the fake login page before the debrief triggered automatically if they hadn't already "submitted."</p>
+            <p>Working in a context with real users (not just test users) changes how you approach edge cases. What if someone with a slow connection misses the URL bar detail? What if they're on mobile where the domain is truncated? These are not theoretical concerns when you're deploying for an actual organization. It pushed me to test on more device configurations than I usually would.</p>
+            <p>The Port of Seattle context also taught me something about trust. When you build a tool that deliberately deceives users — even for their benefit — you have a responsibility to be transparent about what happened and why. The debrief section wasn't an afterthought; it was the whole point.</p>
+        </div>
+
+        <div class="post-nav">
+            <a href="website-audit-tool.html" class="post-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+                <div>
+                    <span class="post-nav-label">Previous</span>
+                    <span class="post-nav-title">Website Audit Tool</span>
+                </div>
+            </a>
+            <a href="index.html" class="post-nav-link">
+                <div style="text-align:right">
+                    <span class="post-nav-label">Back to</span>
+                    <span class="post-nav-title">All Posts</span>
+                </div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="footer-logo">
+                        <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+                            <path d="M20 0L40 20L20 40L0 20L20 0Z" fill="currentColor"/>
+                            <path d="M20 8L32 20L20 32L8 20L20 8Z" fill="url(#footerLogoGrad)" opacity="0.6"/>
+                            <defs>
+                                <linearGradient id="footerLogoGrad" x1="8" y1="8" x2="32" y2="32">
+                                    <stop offset="0%" stop-color="#6366f1"/>
+                                    <stop offset="100%" stop-color="#a855f7"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <span>Webgari<span class="logo-accent">.</span></span>
+                    </a>
+                    <p>Crafting digital experiences that convert visitors into customers.</p>
+                </div>
+                <div class="footer-nav">
+                    <div class="footer-col">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="../index.html">Home</a></li>
+                            <li><a href="../index.html#services">Services</a></li>
+                            <li><a href="../index.html#portfolio">Work</a></li>
+                            <li><a href="../index.html#contact">Contact</a></li>
+                            <li><a href="index.html">Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Demos</h4>
+                        <ul>
+                            <li><a href="../examples/nail-tech.html">Nail Tech</a></li>
+                            <li><a href="../examples/barbershop.html">Barbershop</a></li>
+                            <li><a href="../examples/restaurant.html">Restaurant</a></li>
+                            <li><a href="../examples/flower-shop.html">Flower Shop</a></li>
+                            <li><a href="../examples/tattoo-shop.html">Tattoo Studio</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Webgari. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="mailto:wangariaberra@gmail.com">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

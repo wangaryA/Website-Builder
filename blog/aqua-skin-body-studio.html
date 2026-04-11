@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aqua Skin & Body Studio | Webgari Dev Blog</title>
+    <meta name="description" content="How I built a full React client site for a local med spa — Vagaro booking integration, Vercel deployment, and GoDaddy DNS config.">
+    <meta name="author" content="Webgari">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#6366f1">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ========================================
+           POST PAGE — Shared Styles
+           ======================================== */
+        .post-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 140px 0 80px;
+            position: relative;
+        }
+
+        .post-hero-inner {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+            width: 100%;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 2.5rem;
+            transition: var(--transition-fast);
+            text-decoration: none;
+        }
+
+        .back-btn svg {
+            width: 16px;
+            height: 16px;
+            transition: var(--transition-fast);
+        }
+
+        .back-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .back-btn:hover svg {
+            transform: translateX(-4px);
+        }
+
+        .post-category {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #ec4899;
+            margin-bottom: 1.2rem;
+            display: block;
+        }
+
+        .post-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 2rem;
+            max-width: 900px;
+        }
+
+        .post-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .post-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .post-meta-item svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--text-muted);
+        }
+
+        .post-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .post-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 5px 14px;
+            border-radius: 100px;
+        }
+
+        /* Accent bar under hero */
+        .post-accent-bar {
+            height: 2px;
+            background: linear-gradient(90deg, #ec4899, #f43f5e, transparent);
+            margin-bottom: 80px;
+        }
+
+        /* ========================================
+           POST CONTENT
+           ======================================== */
+        .post-content {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 0 var(--container-padding) 120px;
+        }
+
+        .post-section {
+            margin-bottom: 4rem;
+        }
+
+        .post-section-label {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .post-section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        .post-section h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .post-section p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+        }
+
+        .post-section p strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .post-section ul, .post-section ol {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            padding-left: 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .post-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Tech stack grid */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .tech-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 1.25rem 1.5rem;
+            transition: var(--transition-fast);
+        }
+
+        .tech-item:hover {
+            border-color: var(--border-color-hover);
+            transform: translateY(-3px);
+        }
+
+        .tech-item-name {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .tech-item-role {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Callout / highlight block */
+        .post-callout {
+            background: var(--accent-gradient-subtle);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-left: 3px solid var(--accent-primary);
+            border-radius: 12px;
+            padding: 1.5rem 1.75rem;
+            margin: 2rem 0;
+        }
+
+        .post-callout p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .post-callout p strong {
+            color: var(--accent-primary);
+        }
+
+        /* Post footer nav */
+        .post-nav {
+            border-top: 1px solid var(--border-color);
+            padding-top: 3rem;
+            margin-top: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .post-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition-fast);
+            max-width: 240px;
+        }
+
+        .post-nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        .post-nav-link svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
+        .post-nav-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .post-nav-title {
+            font-weight: 600;
+            color: inherit;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .post-meta-row { gap: 1rem; }
+            .tech-grid { grid-template-columns: repeat(2, 1fr); }
+            .post-nav { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <div class="bg-grid"></div>
+    <div class="gradient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="logo-wrapper">
+                    <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+                        <path d="M20 0L40 20L20 40L0 20L20 0Z" fill="currentColor"/>
+                        <path d="M20 8L32 20L20 32L8 20L20 8Z" fill="url(#logoGrad)" opacity="0.6"/>
+                        <defs>
+                            <linearGradient id="logoGrad" x1="8" y1="8" x2="32" y2="32">
+                                <stop offset="0%" stop-color="#6366f1"/>
+                                <stop offset="100%" stop-color="#a855f7"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="logo-text">Webgari<span class="logo-accent">.</span></span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link"><span data-text="Home">Home</span></a></li>
+                <li><a href="../index.html#services" class="nav-link"><span data-text="Services">Services</span></a></li>
+                <li><a href="../index.html#portfolio" class="nav-link"><span data-text="Work">Work</span></a></li>
+                <li><a href="../about.html" class="nav-link"><span data-text="About">About</span></a></li>
+                <li><a href="index.html" class="nav-link"><span data-text="Blog">Blog</span></a></li>
+                <li class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle"><span data-text="Demos">Demos</span> <span class="arrow"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../examples/nail-tech.html"><span class="demo-dot beauty"></span>Nail Tech</a></li>
+                        <li><a href="../examples/barbershop.html"><span class="demo-dot barber"></span>Barbershop</a></li>
+                        <li><a href="../examples/restaurant.html"><span class="demo-dot restaurant"></span>Restaurant</a></li>
+                        <li><a href="../examples/flower-shop.html"><span class="demo-dot flower"></span>Flower Shop</a></li>
+                        <li><a href="../examples/tattoo-shop.html"><span class="demo-dot tattoo"></span>Tattoo Studio</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <a href="../index.html#contact" class="nav-cta">
+                <span>Let's Talk</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Post Hero -->
+    <section class="post-hero">
+        <div class="post-hero-inner">
+            <a href="index.html" class="back-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 5l-7 7 7 7"/>
+                </svg>
+                Back to Blog
+            </a>
+            <span class="post-category">Client Project</span>
+            <h1 class="post-title">Aqua Skin & Body Studio</h1>
+            <div class="post-meta-row">
+                <span class="post-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                    March 2024
+                </span>
+                <span class="post-meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    4 min read
+                </span>
+            </div>
+            <div class="post-tags">
+                <span class="post-tag">React</span>
+                <span class="post-tag">Vercel</span>
+                <span class="post-tag">GoDaddy</span>
+                <span class="post-tag">Vagaro</span>
+                <span class="post-tag">Client Work</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="post-accent-bar"></div>
+
+    <!-- Post Content -->
+    <div class="post-content">
+
+        <div class="post-section">
+            <div class="post-section-label">Overview</div>
+            <h2>What this project is</h2>
+            <p>Aqua Skin & Body Studio is a local med spa offering skincare treatments, body contouring, and wellness services. They had no website — just an Instagram page and a Vagaro booking profile. The owner reached out wanting something professional that could actually convert foot traffic into online bookings.</p>
+            <p>This was my first real client project with a full production deployment, a live domain, and someone's actual business on the line. That changes things. When it's your own side project and something breaks, you fix it whenever. When it's a client's booking page going down at 7pm on a Friday, that's a different conversation.</p>
+        </div>
+
+        <div class="post-section">
+            <div class="post-section-label">The Build</div>
+            <h2>How I built it</h2>
+            <p>The site is a <strong>React single-page app</strong> — not because the project strictly needed it, but because the client wanted room to grow. If they ever add a blog, a shop, or more pages, the architecture is already there.</p>
+            <p>The home page has a hero section with their brand photography, a services breakdown, client testimonials, and an embedded booking widget. That last part — the booking widget — is where Vagaro comes in.</p>
+            <p><strong>Vagaro integration</strong> was actually smoother than expected. They provide a JavaScript embed snippet that drops a booking button or inline widget anywhere on the page. I customized it to match the site's color palette and tied it into the CTA sections throughout the page. The whole thing is client-managed — she can update her services, availability, and pricing on the Vagaro dashboard without touching any code.</p>
+            <p>Deployment is on <strong>Vercel</strong> with automatic deploys from the main GitHub branch. The domain lives on <strong>GoDaddy</strong> — I added Vercel's nameservers in the GoDaddy DNS settings, which redirects everything to Vercel's edge network. Full HTTPS out of the box, global CDN, zero server maintenance.</p>
+            <div class="post-callout">
+                <p><strong>DNS tip:</strong> GoDaddy's nameserver propagation can take up to 48 hours, but in practice it usually hits within 2–4 hours. Set it up the night before you want to launch, not the morning of.</p>
+            </div>
+            <p>I used Vercel's environment variables for anything sensitive (API keys for a contact form) and kept the Vagaro embed ID out of the repo. Small thing, but the right habit to build early.</p>
+        </div>
+
+        <div class="post-section">
+            <div class="post-section-label">Tech Stack</div>
+            <h2>What's under the hood</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-item-name">React</div>
+                    <div class="tech-item-role">Frontend framework</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-item-name">Vercel</div>
+                    <div class="tech-item-role">Hosting & CI/CD</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-item-name">GoDaddy</div>
+                    <div class="tech-item-role">Domain & DNS</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-item-name">Vagaro</div>
+                    <div class="tech-item-role">Booking integration</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-item-name">Formspree</div>
+                    <div class="tech-item-role">Contact form backend</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="post-section">
+            <div class="post-section-label">Lessons Learned</div>
+            <h2>What I'd do differently</h2>
+            <p>Client work is 50% code and 50% communication. I underestimated how much time I'd spend clarifying scope — "does the gallery section need filtering?" "Should mobile nav have a phone number in it?" These questions seem small but they add up fast if you don't establish them upfront.</p>
+            <p><strong>What worked:</strong> React for this size of project was probably overkill, but future-proofing the client was worth it. Vercel's DX is genuinely excellent for this type of deployment — preview URLs for every PR meant the client could see changes before anything went live.</p>
+            <p><strong>What I'd change:</strong> I'd set up a more structured feedback process from the start. I had 3 rounds of "can we move this button?" type revisions because I hadn't locked in a design approval step early. Standard contract stuff, but you learn it by doing.</p>
+            <p>The Vagaro embed works great, but it does load some third-party JS that slightly impacts Lighthouse scores. For a service business booking site, conversion matters more than a perfect 100, so it's a reasonable trade — but something to be aware of if a client is score-conscious.</p>
+        </div>
+
+        <!-- Post nav -->
+        <div class="post-nav">
+            <a href="index.html" class="post-nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+                <div>
+                    <span class="post-nav-label">Back to</span>
+                    <span class="post-nav-title">All Posts</span>
+                </div>
+            </a>
+            <a href="cybersecurity-home-lab.html" class="post-nav-link">
+                <div style="text-align:right">
+                    <span class="post-nav-label">Next Post</span>
+                    <span class="post-nav-title">Cybersecurity Home Lab</span>
+                </div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="footer-logo">
+                        <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+                            <path d="M20 0L40 20L20 40L0 20L20 0Z" fill="currentColor"/>
+                            <path d="M20 8L32 20L20 32L8 20L20 8Z" fill="url(#footerLogoGrad)" opacity="0.6"/>
+                            <defs>
+                                <linearGradient id="footerLogoGrad" x1="8" y1="8" x2="32" y2="32">
+                                    <stop offset="0%" stop-color="#6366f1"/>
+                                    <stop offset="100%" stop-color="#a855f7"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <span>Webgari<span class="logo-accent">.</span></span>
+                    </a>
+                    <p>Crafting digital experiences that convert visitors into customers.</p>
+                </div>
+                <div class="footer-nav">
+                    <div class="footer-col">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="../index.html">Home</a></li>
+                            <li><a href="../index.html#services">Services</a></li>
+                            <li><a href="../index.html#portfolio">Work</a></li>
+                            <li><a href="../index.html#contact">Contact</a></li>
+                            <li><a href="index.html">Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Demos</h4>
+                        <ul>
+                            <li><a href="../examples/nail-tech.html">Nail Tech</a></li>
+                            <li><a href="../examples/barbershop.html">Barbershop</a></li>
+                            <li><a href="../examples/restaurant.html">Restaurant</a></li>
+                            <li><a href="../examples/flower-shop.html">Flower Shop</a></li>
+                            <li><a href="../examples/tattoo-shop.html">Tattoo Studio</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Webgari. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="mailto:wangariaberra@gmail.com">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
