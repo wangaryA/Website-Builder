@@ -272,13 +272,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
 
-    // Section titles get a left-to-right wipe (wipe effect for text only)
-    document.querySelectorAll('.section-title, .section-tag').forEach(el => {
+    // Only section-tag gets the clip-path wipe — section-title uses splitObserver instead
+    document.querySelectorAll('.section-tag').forEach(el => {
         el.classList.add('title-wipe-reveal');
         wipeObserver.observe(el);
     });
-    // Note: service-card, portfolio-item, process-step use animateOnScroll below
-    // so we keep them out of wipeObserver to avoid clip-path conflicts
+    // Note: .section-title uses splitObserver (below); keeping it out of wipeObserver
+    // avoids clip-path conflict that hides span children after opacity animation fires
 
     // Counter animation observer
     const counterObserver = new IntersectionObserver((entries) => {
@@ -388,28 +388,32 @@ document.addEventListener('DOMContentLoaded', function () {
     // ===================================
     const splitTexts = document.querySelectorAll('.section-title.split-text');
 
+    const revealSpans = (text) => {
+        const spans = text.querySelectorAll('span');
+        spans.forEach((span, i) => {
+            setTimeout(() => {
+                span.style.opacity = '1';
+                span.style.transform = 'translateY(0)';
+            }, i * 150);
+        });
+    };
+
     const splitObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const spans = entry.target.querySelectorAll('span');
-                spans.forEach((span, i) => {
-                    setTimeout(() => {
-                        span.style.opacity = '1';
-                        span.style.transform = 'translateY(0)';
-                    }, i * 150);
-                });
+                revealSpans(entry.target);
                 splitObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
     splitTexts.forEach(text => {
         const spans = text.querySelectorAll('span');
         spans.forEach(span => {
             span.style.opacity = '0';
-            span.style.transform = 'translateY(50px)';
+            span.style.transform = 'translateY(30px)';
             span.style.display = 'block';
-            span.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            span.style.transition = 'opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
         });
         splitObserver.observe(text);
     });
