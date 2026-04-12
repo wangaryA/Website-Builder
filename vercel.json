@@ -1,3 +1,9 @@
 {
-  "cleanUrls": false
+  "cleanUrls": false,
+  "rewrites": [
+    {
+      "source": "/googled3ba2e44479b70d5.html",
+      "destination": "/googled3ba2e44479b70d5.html"
+    }
+  ]
 }
