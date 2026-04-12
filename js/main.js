@@ -5,6 +5,9 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
+    // Mark body so CSS reveal animations only activate when JS is running
+    document.body.classList.add('js-ready');
+
     // ===================================
     // CUSTOM CURSOR
     // ===================================
@@ -638,18 +641,18 @@ document.addEventListener('DOMContentLoaded', function () {
 const dynamicStyles = document.createElement('style');
 dynamicStyles.textContent = `
 
-    /* ---- Base reveal states ---- */
-    .service-card,
-    .portfolio-item,
-    .process-step {
+    /* ---- Base reveal states (only active when JS is running) ---- */
+    body.js-ready .service-card,
+    body.js-ready .portfolio-item,
+    body.js-ready .process-step {
         opacity: 0;
         transform: translateY(40px);
         transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
                     transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .service-card.visible,
-    .portfolio-item.visible,
-    .process-step.visible {
+    body.js-ready .service-card.visible,
+    body.js-ready .portfolio-item.visible,
+    body.js-ready .process-step.visible {
         opacity: 1;
         transform: translateY(0);
     }
