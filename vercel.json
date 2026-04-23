@@ -1,5 +1,6 @@
 {
-  "cleanUrls": false,
+  "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
     {
       "source": "/googled3ba2e44479b70d5.html",

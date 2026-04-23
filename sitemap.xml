@@ -3,56 +3,56 @@
 
   <url>
     <loc>https://webgari.site/</loc>
-    <lastmod>2026-04-19</lastmod>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://webgari.site/about</loc>
-    <lastmod>2026-04-19</lastmod>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://webgari.site/blog/</loc>
-    <lastmod>2026-04-19</lastmod>
+    <loc>https://webgari.site/blog</loc>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://webgari.site/blog/aqua-skin-body-studio</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://webgari.site/blog/cybersecurity-home-lab</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://webgari.site/blog/3d-multiplayer-snake</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://webgari.site/blog/website-audit-tool</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://webgari.site/blog/phishing-awareness-capstone</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
